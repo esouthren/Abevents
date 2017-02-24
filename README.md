@@ -2,4 +2,4 @@
 The Aberdeen Nightlife App
 
 
-Live at: plumbus.azurewebsites.net
+Live at: http://plumbus.azurewebsites.net
