@@ -2,4 +2,4 @@
 The Aberdeen Nightlife App
 
 
-Live at: http://plumbus.azurewebsites.net
+Live at: https://esouthren.github.io/JohnsClass/
