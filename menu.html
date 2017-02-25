@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+    <link rel="stylesheet" href="pikaday.css">
+    <style>
+        
+        body {
+            background-color: floralwhite;
+            margin: 0;
+            font-family: helvetica;
+        }
+        
+        #header {
+            width: 100%;
+            background-color: red;
+            padding: 3%;
+        }
+        
+        #menu {
+            float: right;
+            width: 20%;
+            background-color: darkslategray;
+            height: 100vh;
+            color: white;
+            padding: 3%;
+            
+        }
+        
+        .dateTextBox {
+            border-radius: 5px;
+            padding: 0.5em;
+            background-color: antiquewhite;
+            border: 0;
+            width: 100%;
+        }
+    
+        
+        .updateSearchButton {
+            border-radius: 5px;
+            background-color: antiquewhite;
+            padding: 0.5em;
+            border: 0;
+            font-size: 120%;
+            width: 100%;
+        }
+        
+        .updateSearchButton:hover {
+            background-color: lightslategray;
+        }
+        
+        .sliderTable {
+            width: 100%;  
+            line-height: 0;
+                
+        }
+        .slider {
+            width: 85%;
+      
+        }
+        .sliderBar {
+            width: 100%;            
+        }
+        .sliderValue {
+         text-align: right;
+           
+        }
+        
+        </style>
+    </head>
+    
+   
+
+<body>
+    
+    <div id ="header">
+    I'm a header ya ya ya </div>
+    
+    <div id ="menu">
+    
+        <h1>Search Filters</h1>
+
+
+        <label for="datepicker"><h3>Date &nbsp;&nbsp;</h3> </label>
+        <input class="dateTextBox" type="text" value="Select Date" id="datepicker">
+        <br ><br />
+        <h3> Categories</h3>
+       
+        <input type="checkbox" name="cat" value="club">Nightclubs<br>
+        <input type="checkbox" name="cat" value="gig">Gigs<br>
+        <input type="checkbox" name="cat" value="comedy">Comedy<br>
+        <input type="checkbox" name="cat" value="theatre">Theatre<br>
+        <br />
+        
+        <h3>Max Price</h3>              
+             <table class="sliderTable">
+             <tr><td class="slider">
+                  <input class="sliderBar" type="range" id="slider" value="10" min="0" max="100" step="1"
+                   oninput="sliderChange(this.value)">
+                 </td>
+                 <td class="sliderValue">
+                           <h3>£<output id="output">10</output></h3>
+                 </td></tr></table>
+           
+       
+             
+             <br /><br />
+
+        
+        <input type="submit" class="updateSearchButton" value="Update Search">
+        
+    </div>
+    
+    
+    <script src="pikaday.js"></script>
+    <script>
+        
+        // retrieving value of price slider
+        function sliderChange(val) {
+            document.getElementById('output').innerHTML = val;
+        }
+     
+        
+
+    var picker = new Pikaday(
+    {
+        field: document.getElementById('datepicker'),
+        firstDay: 1,
+        minDate: new Date(),
+        maxDate: new Date(2020, 12, 31),
+        yearRange: [2000,2020]
+    });
+
+    </script>
+
+
+</body>
+</html>
