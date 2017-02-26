@@ -1,93 +1,85 @@
 <!DOCTYPE html>
 <html>
-    
     <head>
-    <link rel="stylesheet" href="pikaday.css">
-    <link rel="stylesheet" href="style.css">"
-    <style>
-        
-       
-        
-        </style>
+        <link rel="stylesheet" href="pikaday.css">
+        <link rel="stylesheet" href="style.css">
     </head>
-    
-   
-
+     
 <body>
     
     <div id ="header">
-    I'm a header ya ya ya </div>
+        I'm a header ya ya ya 
+    </div>
     
     <div id ="menu">
     
         <h1>Search Filters</h1>
 
-
         <label for="datepicker"><h3>Date &nbsp;&nbsp;</h3> </label>
         <h5>
-        <div id="catButton" onclick="categoryToggle(this)">Today</div>
-        <div id="catButton" onclick="categoryToggle(this)">Tomorrow</div>
-        <div id="catButton" onclick="categoryToggle(this)">Weekend</div>
-        <div id="catButton" onclick="categoryToggle(this)">Weeknights</div>
+            <div id="catButton" onclick="categoryToggle(this)">Today</div>
+            <div id="catButton" onclick="categoryToggle(this)">Tomorrow</div>
+            <div id="catButton" onclick="categoryToggle(this)">Weekend</div>
+            <div id="catButton" onclick="categoryToggle(this)">Weeknights</div>
         </h5>
         
-        <p style="line-height:0.5">or<p />
-        
+        <p style="line-height:0.5">or<p />        
 
         <table class="sliderTable">
-            <tr><td class="sliderValue">From&nbsp; </td>
-            <td class="sliderBar">             
-            <input class="dateTextBox" type="text" value="Select Date" id="datepicker">
+            <tr>
+                <td class="sliderValue">From&nbsp; </td>
+                <td class="sliderBar">             
+                    <input class="dateTextBox" type="text" value="Select Date" id="datepicker">
                 </td>
             </tr>
-            <tr><td>To </td>
-            <td class="sliderBar">             
-            <input class="dateTextBox" type="text" value="Select Date" id="datepicker2">
+            <tr>
+                <td>To </td>
+                <td class="sliderBar">             
+                    <input class="dateTextBox" type="text" value="Select Date" id="datepicker2">
                 </td>
-            </tr>
-            
+            </tr>            
         </table>
-        <br >
+        
+        <br />
         <h3> Categories</h3>
         <h5>
-        <div id="catButton" onclick="categoryToggle(this)">Nightclubs</div>
-        <div id="catButton" onclick="categoryToggle(this)">Gigs</div>
-        <div id="catButton" onclick="categoryToggle(this)">Comedy</div>
-        <div id="catButton" onclick="categoryToggle(this)">Theatre</div>
-        <div id="catButton" onclick="categoryToggle(this)">Festivals</div>
-        <div id="catButton" onclick="categoryToggle(this)">Ceilidh</div>
+            <div id="catButton" onclick="categoryToggle(this)">Nightclubs</div>
+            <div id="catButton" onclick="categoryToggle(this)">Gigs</div>
+            <div id="catButton" onclick="categoryToggle(this)">Comedy</div>
+            <div id="catButton" onclick="categoryToggle(this)">Theatre</div>
+            <div id="catButton" onclick="categoryToggle(this)">Festivals</div>
+            <div id="catButton" onclick="categoryToggle(this)">Ceilidh</div>
         </h5>
         
         <h3>Max Price</h3>              
-             <table class="sliderTable">
-             <tr><td class="slider">
-                  <input class="sliderBar" type="range" id="slider" value="10" min="0" max="100" step="1"
-                   oninput="sliderChange(th is.value)">
+        <table class="sliderTable">
+            <tr>
+                <td class="slider">
+                    <input class="sliderBar" type="range" id="slider" value="10" min="0" max="100" step="1"
+                    oninput="sliderChange(th is.value)">
                  </td>
                  <td class="sliderValue">
-                           <h3>£<output id="output">10</output></h3>
-                 </td></tr></table>
-           
-       
-             
-             <br />
-
+                    <h3>£<output id="output">10</output></h3>
+                 </td>
+            </tr>
+        </table>       
+        <br />
         
         <h3><input type="submit" class="updateSearchButton" value="Update Search"></h3>
         
-    </div>
+    </div>    
     
+    <!-- Javascripty Bits and Pieces -->
     
-    <script src="pikaday.js"></script>
-    <script>
-        
+    <script src="pikaday.js"> // Pikadaty is the Calendar Widget</script>
+    <script>        
         // retrieving value of price slider
         function sliderChange(val) {
             document.getElementById('output').innerHTML = val;
         }
         
         // changing background colour of category buttons
-        // need to add boolean toggle to distinguish on/off
+        // need to add boolean toggle to distinguish on/off when submitted
         function categoryToggle(divObj) {
             if (divObj.style.background == "antiquewhite") {
                 divObj.style.background = "lightslategray";
@@ -95,30 +87,27 @@
             else {
                 divObj.style.background = "antiquewhite";
             }                 
-        }
-     
+        }   
         
-
-    var datePickerFrom = new Pikaday(
-    {
-        field: document.getElementById('datepicker'),
-        firstDay: 1,
-        minDate: new Date(),
-        maxDate: new Date(2020, 12, 31),
-        yearRange: [2000,2020]
-    });
+        var datePickerFrom = new Pikaday(
+        {
+            field: document.getElementById('datepicker'),
+            firstDay: 1,
+            minDate: new Date(),
+            maxDate: new Date(2020, 12, 31),
+            yearRange: [2000,2020]
+        });
         
         var datePickerTo = new Pikaday(
-    {
-        field: document.getElementById('datepicker2'),
-        firstDay: 1,
-        minDate: new Date(),
-        maxDate: new Date(2020, 12, 31),
-        yearRange: [2000,2020]
-    });
+        {
+            field: document.getElementById('datepicker2'),
+            firstDay: 1,
+            minDate: new Date(),
+            maxDate: new Date(2020, 12, 31),
+            yearRange: [2000,2020]
+        });
 
     </script>
-
 
 </body>
 </html>
