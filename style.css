@@ -1,1 +1,74 @@
-/* Style go here */
+/* style for menu.html page */
+
+ body {
+            background-color: floralwhite;
+            margin: 0;
+            font-family: helvetica;
+        }
+        
+        #header {
+            width: 100%;
+            background-color: red;
+            padding: 3%;
+        }
+        
+        #menu {
+            float: right;
+            width: 20%;
+            background-color: darkslategray;
+            height: 100vh;
+            color: white;
+            padding: 1% 3% 3% 3%;
+            
+        }
+        
+        .dateTextBox {
+            border-radius: 2px;
+            padding: 0.5em;
+            background-color: antiquewhite;
+            border: 0;
+            width: 100%;
+        }
+    
+        
+        .updateSearchButton {
+            border-radius: 2px;
+            background-color: antiquewhite;
+            padding: 0.5em;
+            border: 0;
+            font-size: 120%;
+            width: 100%;
+        }
+        
+        .updateSearchButton:hover {
+            background-color: lightslategray;
+        }
+        
+        .sliderTable {
+            width: 100%;  
+            line-height: 0;
+                
+        }
+        .slider {
+            width: 85%;
+      
+        }
+        .sliderBar {
+            width: 100%;            
+        }
+        .sliderValue {
+         text-align: right;
+           
+        }
+
+        #catButton {
+            background-color: antiquewhite;
+            border-radius: 2px;
+            padding: 0.5em;
+            border: 0;
+            color: black;
+            margin: 0% 1% 0% 1%;
+            display: inline;
+            line-height: 2.5;
+
+        }
