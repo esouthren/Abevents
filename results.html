@@ -6,12 +6,74 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="pikaday.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+		<script src="jsController.js"></script>
+		
     </head>
     
     <body>
+	
+		<!-- Angular JS for Mobile Menu slider -->
+	<div ng-app="abEvents" ng-controller="abEventsController">
         <div id="Header">
             <img src="Logo.png" alt="Logo"/>
-            <input type="text" id="search" name="search" placeholder="Search Bar">
+			<div id="menuMobile">
+                <h1>Search Filters</h1>
+
+				<label for="datepicker"><h3>Date &nbsp;&nbsp;</h3> </label>
+				<h5>
+					<div id="catButton" onclick="categoryToggle(this)">Today</div>
+					<div id="catButton" onclick="categoryToggle(this)">Tomorrow</div>
+					<div id="catButton" onclick="categoryToggle(this)">Weekend</div>
+					<div id="catButton" onclick="categoryToggle(this)">Weeknights</div>
+				</h5>
+				
+				<p style="line-height:0.5">or<p />        
+
+				<table class="sliderTable">
+					<tr>
+						<td class="sliderValue">From&nbsp; </td>
+						<td class="sliderBar">             
+							<input class="dateTextBox" type="text" value="Select Date" id="datepicker">
+						</td>
+					</tr>
+					<tr>
+						<td>To </td>
+						<td class="sliderBar">             
+							<input class="dateTextBox" type="text" value="Select Date" id="datepicker2">
+						</td>
+					</tr>            
+				</table>
+				
+				<br />
+				<h3> Categories</h3>
+				<h5>
+					<div id="catButton" onclick="categoryToggle(this)">Nightclubs</div>
+					<div id="catButton" onclick="categoryToggle(this)">Gigs</div>
+					<div id="catButton" onclick="categoryToggle(this)">Comedy</div>
+					<div id="catButton" onclick="categoryToggle(this)">Theatre</div>
+					<div id="catButton" onclick="categoryToggle(this)">Festivals</div>
+					<div id="catButton" onclick="categoryToggle(this)">Ceilidh</div>
+				</h5>
+				
+				<h3>Max Price</h3>              
+				<table class="sliderTable">
+					<tr>
+						<td class="slider">
+							<input class="sliderBar" type="range" id="slider" value="10" min="0" max="100" step="1"
+							oninput="sliderChange(th is.value)">
+						 </td>
+						 <td class="sliderValue">
+							<h3>£<output id="output">10</output></h3>
+						 </td>
+					</tr>
+				</table>       
+				<br />
+				
+				<h3><input type="submit" class="updateSearchButton" value="Update Search"></h3>
+            </div>
+           
         </div>
         <div id="Content">
             <ul>
@@ -76,63 +138,64 @@
             </ul>
         </div>
         <div id="Search">
-            <div id="Calendar">
+		
+            <div id="menu">
                 <h1>Search Filters</h1>
 
-        <label for="datepicker"><h3>Date &nbsp;&nbsp;</h3> </label>
-        <h5>
-            <div id="catButton" onclick="categoryToggle(this)">Today</div>
-            <div id="catButton" onclick="categoryToggle(this)">Tomorrow</div>
-            <div id="catButton" onclick="categoryToggle(this)">Weekend</div>
-            <div id="catButton" onclick="categoryToggle(this)">Weeknights</div>
-        </h5>
-        
-        <p style="line-height:0.5">or<p />        
+				<label for="datepicker"><h3>Date &nbsp;&nbsp;</h3> </label>
+				<h5>
+					<div id="catButton" onclick="categoryToggle(this)">Today</div>
+					<div id="catButton" onclick="categoryToggle(this)">Tomorrow</div>
+					<div id="catButton" onclick="categoryToggle(this)">Weekend</div>
+					<div id="catButton" onclick="categoryToggle(this)">Weeknights</div>
+				</h5>
+				
+				<p style="line-height:0.5">or<p />        
 
-        <table class="sliderTable">
-            <tr>
-                <td class="sliderValue">From&nbsp; </td>
-                <td class="sliderBar">             
-                    <input class="dateTextBox" type="text" value="Select Date" id="datepicker">
-                </td>
-            </tr>
-            <tr>
-                <td>To </td>
-                <td class="sliderBar">             
-                    <input class="dateTextBox" type="text" value="Select Date" id="datepicker2">
-                </td>
-            </tr>            
-        </table>
-        
-        <br />
-        <h3> Categories</h3>
-        <h5>
-            <div id="catButton" onclick="categoryToggle(this)">Nightclubs</div>
-            <div id="catButton" onclick="categoryToggle(this)">Gigs</div>
-            <div id="catButton" onclick="categoryToggle(this)">Comedy</div>
-            <div id="catButton" onclick="categoryToggle(this)">Theatre</div>
-            <div id="catButton" onclick="categoryToggle(this)">Festivals</div>
-            <div id="catButton" onclick="categoryToggle(this)">Ceilidh</div>
-        </h5>
-        
-        <h3>Max Price</h3>              
-        <table class="sliderTable">
-            <tr>
-                <td class="slider">
-                    <input class="sliderBar" type="range" id="slider" value="10" min="0" max="100" step="1"
-                    oninput="sliderChange(th is.value)">
-                 </td>
-                 <td class="sliderValue">
-                    <h3>£<output id="output">10</output></h3>
-                 </td>
-            </tr>
-        </table>       
-        <br />
-        
-        <h3><input type="submit" class="updateSearchButton" value="Update Search"></h3>
+				<table class="sliderTable">
+					<tr>
+						<td class="sliderValue">From&nbsp; </td>
+						<td class="sliderBar">             
+							<input class="dateTextBox" type="text" value="Select Date" id="datepicker">
+						</td>
+					</tr>
+					<tr>
+						<td>To </td>
+						<td class="sliderBar">             
+							<input class="dateTextBox" type="text" value="Select Date" id="datepicker2">
+						</td>
+					</tr>            
+				</table>
+				
+				<br />
+				<h3> Categories</h3>
+				<h5>
+					<div id="catButton" onclick="categoryToggle(this)">Nightclubs</div>
+					<div id="catButton" onclick="categoryToggle(this)">Gigs</div>
+					<div id="catButton" onclick="categoryToggle(this)">Comedy</div>
+					<div id="catButton" onclick="categoryToggle(this)">Theatre</div>
+					<div id="catButton" onclick="categoryToggle(this)">Festivals</div>
+					<div id="catButton" onclick="categoryToggle(this)">Ceilidh</div>
+				</h5>
+				
+				<h3>Max Price</h3>              
+				<table class="sliderTable">
+					<tr>
+						<td class="slider">
+							<input class="sliderBar" type="range" id="slider" value="10" min="0" max="100" step="1"
+							oninput="sliderChange(th is.value)">
+						 </td>
+						 <td class="sliderValue">
+							<h3>£<output id="output">10</output></h3>
+						 </td>
+					</tr>
+				</table>       
+				<br />
+				
+				<h3><input type="submit" class="updateSearchButton" value="Update Search"></h3>
             </div>
         </div>
-		
+	</div>
 		
 		<!-- Javascripty Bits and Pieces -->
     
