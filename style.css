@@ -1,32 +1,62 @@
 /* Rules for Mobile Devices */
 
+
 @media only screen and (max-device-width: 750px) {
 	
-	#menu {
-		display: none !important;
-		
-	}
-	
-	#menuMobile {
-		display: block !important;
-	}
-	
-	
+    #menu {
+
+        width: 80% !important;
+        position:  fixed !important;      
+        top: 0 !important;
+        z-index: 2 !important;
+        transition: all linear 0.3s !important;
+    }
+
+    #menu.ng-hide {
+        right: -300px !important;
+    }
+
+
+    #eventsContainer {
+        width: 95% !important;
+    }
+
+    .openMobileMenuButton {
+        display: inline !important;
+    }
+
 }
 
-
-
-
 /* Main Screen Rules */
+
+.openMobileMenuButton {
+    float: right;
+    display: none;    
+    border-radius: 5px;    
+}
 
 body {
     margin: 0 auto;
     font-family: sans-serif;
+
 }
 
 #Header {
     background-color: #d4145a;
-    height: 100px;
+    height: 10%;
+    min-height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+#mysticalHeaderPaddingFix {
+    height: 10%;
+    width: 100%;
+    min-height: 100px;
+    
 }
 #Header input {
     float: right;
@@ -41,31 +71,44 @@ body {
     padding: 25px;
 }
 
-#Content {
-    background-color: #ffffff;
-    float: left;
-    width: 83%;
+
+
+
+#mainContent::after {
+
+    content: "";
+    clear: both;
+    display: table;
+
 }
 
-#Content ul {
-    float: top;
-    list-style-type: none;
+
+
+#eventsContainer {
+    overflow-y: auto;
+position: relative;
+   width: 75%;
+    margin: 0.5em;
+    left: 0;
+    top: 10%;
+    
 }
 
-#Content ul li{
-    float: top;
-    margin-top: 40px;
-    display: inline-block;
-}
 
 .Event {
-    float: top;
+	width: 100%;
+    padding: 1em;
+	margin-bottom: 1em;
+    
+    background-color: red;
+
+
 }
 
 .Event img {
     float: left;
-    width: 240px;
-    height: 240px;
+    width: 15%;
+   
 }
 
 .EventText {
@@ -116,12 +159,6 @@ body {
     float: bottom;
 }
 
-#Search {
-    background-color: #d8d8d8;
-    float: right;
-    height: 1000px;
-    width: 16%;
-}
 
 #Calendar {
     color: white; 
@@ -142,12 +179,18 @@ hr {
 /* Menu Stuff */
 
  #menu {
-	 float: right;
-	 width: 100%;
+	
+	 width: 20%;
+	 
 	 background-color: darkslategray;
 	 height: 100vh;
 	 color: white;
-	 padding: 1% 5% 3% 5%;
+	 padding: 1% 2% 1% 2%;
+    position: fixed;
+     right: 0;
+     top: 100px;
+     
+	
 	 
  }
   #menuMobile {
