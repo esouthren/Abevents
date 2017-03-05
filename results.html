@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Whats Going On</title>
+        <title>Whats Going On </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
@@ -18,66 +18,65 @@
 	<div ng-app="abEvents" ng-controller="abEventsController">
         <div id="Header">
             <img src="Logo.png" alt="Logo"/>
-			<div id="menuMobile">
-                <h1>Search Filters</h1>
-
-				<label for="datepicker"><h3>Date &nbsp;&nbsp;</h3> </label>
-				<h5>
-					<div id="catButton" onclick="categoryToggle(this)">Today</div>
-					<div id="catButton" onclick="categoryToggle(this)">Tomorrow</div>
-					<div id="catButton" onclick="categoryToggle(this)">Weekend</div>
-					<div id="catButton" onclick="categoryToggle(this)">Weeknights</div>
-				</h5>
-				
-				<p style="line-height:0.5">or<p />        
-
-				<table class="sliderTable">
-					<tr>
-						<td class="sliderValue">From&nbsp; </td>
-						<td class="sliderBar">             
-							<input class="dateTextBox" type="text" value="Select Date" id="datepicker">
-						</td>
-					</tr>
-					<tr>
-						<td>To </td>
-						<td class="sliderBar">             
-							<input class="dateTextBox" type="text" value="Select Date" id="datepicker2">
-						</td>
-					</tr>            
-				</table>
-				
-				<br />
-				<h3> Categories</h3>
-				<h5>
-					<div id="catButton" onclick="categoryToggle(this)">Nightclubs</div>
-					<div id="catButton" onclick="categoryToggle(this)">Gigs</div>
-					<div id="catButton" onclick="categoryToggle(this)">Comedy</div>
-					<div id="catButton" onclick="categoryToggle(this)">Theatre</div>
-					<div id="catButton" onclick="categoryToggle(this)">Festivals</div>
-					<div id="catButton" onclick="categoryToggle(this)">Ceilidh</div>
-				</h5>
-				
-				<h3>Max Price</h3>              
-				<table class="sliderTable">
-					<tr>
-						<td class="slider">
-							<input class="sliderBar" type="range" id="slider" value="10" min="0" max="100" step="1"
-							oninput="sliderChange(th is.value)">
-						 </td>
-						 <td class="sliderValue">
-							<h3>£<output id="output">10</output></h3>
-						 </td>
-					</tr>
-				</table>       
-				<br />
-				
-				<h3><input type="submit" class="updateSearchButton" value="Update Search"></h3>
-            </div>
            
         </div>
         <div id="Content">
+			<div class="Event">
+			<div class="EventText">
+					<div class="EventTitle">{{ event }} </div>
+					<div class="EventLocation">Location</div>
+					<p>
+					   {{ testEvents }} {{ test }} In consectetur dignissim libero vel tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta accumsan auctor. Morbi eget ex vitae sem euismod dignissim. Suspendisse auctor libero quis ornare sodales. Pellentesque id dui condimentum lacus tincidunt mattis et vel leo. Praesent non tristique enim. Curabitur suscipit lorem diam, non volutpat ex mollis vitae.
+					</p>
+				</div>
+				<div class="EventIcons">
+					<img src="IconGreen.png" alt="Green" />
+					<img src="IconBlue.png" alt="Blue" />
+					<img src="IconYellow.png" alt="Yellow" />
+					<img src="IconRed.png" alt="Red" />
+					<img src="IconGrey.png" alt="Grey" />
+				</div>
+			</div><br />
+			<div class="Event">
+			Event 2
+				<!-- <img src="EventIcon.png" alt="Crash"/>
+				<div class="EventText">
+					<div class="EventTitle">{{ event }} </div>
+					<div class="EventLocation">Location</div>
+					<p>
+					   {{ testEvents }} {{ test }} In consectetur dignissim libero vel tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta accumsan auctor. Morbi eget ex vitae sem euismod dignissim. Suspendisse auctor libero quis ornare sodales. Pellentesque id dui condimentum lacus tincidunt mattis et vel leo. Praesent non tristique enim. Curabitur suscipit lorem diam, non volutpat ex mollis vitae.
+					</p>
+				</div>
+				<div class="EventIcons">
+					<img src="IconGreen.png" alt="Green" />
+					<img src="IconBlue.png" alt="Blue" />
+					<img src="IconYellow.png" alt="Yellow" />
+					<img src="IconRed.png" alt="Red" />
+					<img src="IconGrey.png" alt="Grey" />
+				</div> -->
+			</div>
+		<!--
             <ul>
-                <li class="Event">
+                <li ng-repeat="event in testEvents" class="Event">
+                    <img src="EventIcon.png" alt="Crash"/>
+                    <div class="EventText">
+                        <div class="EventTitle">{{ event }} </div>
+                        <div class="EventLocation">Location</div>
+                        <p>
+                           {{ testEvents }} {{ test }} In consectetur dignissim libero vel tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta accumsan auctor. Morbi eget ex vitae sem euismod dignissim. Suspendisse auctor libero quis ornare sodales. Pellentesque id dui condimentum lacus tincidunt mattis et vel leo. Praesent non tristique enim. Curabitur suscipit lorem diam, non volutpat ex mollis vitae.
+                        </p>
+                    </div>
+                    <div class="EventIcons">
+                        <img src="IconGreen.png" alt="Green" />
+                        <img src="IconBlue.png" alt="Blue" />
+                        <img src="IconYellow.png" alt="Yellow" />
+                        <img src="IconRed.png" alt="Red" />
+                        <img src="IconGrey.png" alt="Grey" />
+                    </div>
+                    
+                </li>
+                <hr>
+               <!-- <li class="Event">
                     <img src="EventIcon.png" alt="Crash"/>
                     <div class="EventText">
                         <div class="EventTitle">Title</div>
@@ -115,30 +114,10 @@
                     
                 </li>
                 <hr>
-                <li class="Event">
-                    <img src="EventIcon.png" alt="Crash"/>
-                    <div class="EventText">
-                        <div class="EventTitle">Title</div>
-                        <div class="EventLocation">Location</div>
-                        <p>
-                            In consectetur dignissim libero vel tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta accumsan auctor. Morbi eget ex vitae sem euismod dignissim. Suspendisse auctor libero quis ornare sodales. Pellentesque id dui condimentum lacus tincidunt mattis et vel leo. Praesent non tristique enim. Curabitur suscipit lorem diam, non volutpat ex mollis vitae.
-                        </p>
-                    </div>
-                    <div class="EventIcons">
-                        <img src="IconGreen.png" alt="Green" />
-                        <img src="IconBlue.png" alt="Blue" />
-                        <img src="IconYellow.png" alt="Yellow" />
-                        <img src="IconRed.png" alt="Red" />
-                        <img src="IconGrey.png" alt="Grey" />
-                    </div>
-                    
-                </li>
-                <hr>
-                
-            </ul>
+                -->
+            
         </div>
-        <div id="Search">
-		
+       
             <div id="menu">
                 <h1>Search Filters</h1>
 
@@ -194,7 +173,7 @@
 				
 				<h3><input type="submit" class="updateSearchButton" value="Update Search"></h3>
             </div>
-        </div>
+        
 	</div>
 		
 		<!-- Javascripty Bits and Pieces -->
