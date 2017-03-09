@@ -32,7 +32,23 @@
         <div id="eventsContainer">
 
                 <div ng-repeat="event in testEvents" class="Event">
-                    <h1>{{ event}}</h1> In consectetur dignissim libero vel tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta accumsan auctor. Morbi eget ex vitae sem euismod dignissim. Suspendisse auctor libero quis ornare sodales. Pellentesque id dui condimentum 
+                    <table class="eventsTable">
+                        <tr>
+                            <td class="eventImg"><img src="EventIcon.jpg"</td>
+                            <td class="eventText"><h2>Event {{ event}}</h2><br />In consectetur dignissim libero vel tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta accumsan auctor. Morbi eget ex vitae sem euismod dignissim. Suspendisse auctor libero quis ornare sodales. 
+                            <br /><br /><u>Continue to more info...</u></td>
+                            
+                            <td class="eventIcons">
+                                <center><img src="IconGreen.png" alt="Green" />
+                        <img src="IconBlue.png" alt="Blue" />
+                        <img src="IconYellow.png" alt="Yellow" />
+                        <img src="IconRed.png" alt="Red" />
+                        <img src="IconGrey.png" alt="Grey" /></td>
+                        </center>
+                        </tr>
+                            
+                    </table>
+                    
                     <!--
                     <img src="EventIcon.png" alt="Crash"/>
                     <div class="EventText">
@@ -158,6 +174,13 @@
         var parent = document.getElementById('container1');
         var child = document.getElementById('container2');
         child.style.paddingRight = child.offsetWidth - child.clientWidth + "px";
+        
+        
+        
+        
+        // Menu Sticky Bit
+        
+        
 
     </script>
     </body>
