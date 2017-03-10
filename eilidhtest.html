@@ -11,20 +11,24 @@
 		<script src="jsController.js"></script>
 		<script src="angularHardcopy.js"></script>
         <script src="angularAnimate.js"></script>
-		
+
+        <!-- Fonts! -->
+        <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Montserrat">
+
     </head>
-    
+
     <body>
-	
+
 		<!-- Angular JS for Mobile Menu slider -->
 	<div ng-app="abEvents" ng-controller="abEventsController">
-    
+
 		<div id="Header">
-            <img src="logo.png" alt="Logo"/>
+            <img src="images/logo.png" alt="Logo"/>
             <button class="openMobileMenuButton" ng-click="toggleMenu()" >Menu</button>
 
 		</div>
-        
+
         <div id="mysticalHeaderPaddingFix">
         <!-- who even knows what this div does it just makes the header work -->
         </div>
@@ -34,21 +38,52 @@
                 <div ng-repeat="event in testEvents" class="Event">
                     <table class="eventsTable">
                         <tr>
-                            <td class="eventImg"><img src="EventIcon.jpg"</td>
-                            <td class="eventText"><h2>Event {{ event}}</h2><br />In consectetur dignissim libero vel tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta accumsan auctor. Morbi eget ex vitae sem euismod dignissim. Suspendisse auctor libero quis ornare sodales. 
-                            <br /><br /><u>Continue to more info...</u></td>
-                            
+                            <td class="eventImg"><img src="images/{{ event.image}}"</td>
+                            <td class="eventText">
+                                <h1>{{ event.name}}</h1>
+                                <h2>{{ event.location }}</h2>
+                                <br />
+                                <h3>{{ event.date }} </h3>
+                                <br />
+                                <h3>Time: {{event.time}}</h3>
+                                <br />
+                                <h3>Price: £{{ event.price }}</h3>
+                                <br />
+
+
+
+                                <p class="moreEventInfo" ng-show="!showDetails"></p>
+
+                                <p class="moreEventInfo" ng-show="showDetails">
+                                    <!-- Extra information when expanded -->
+                                    {{ event.description }}
+                                    <br /><br />
+
+
+                                    <a href="#" ng-click="showDetails=!showDetails"><</a>
+                                    </p>
+                                <a href="#" ng-show="!showDetails" ng-click="showDetails=!showDetails">></a>
+
+                          </td>
+
                             <td class="eventIcons">
-                                <center><img src="IconGreen.png" alt="Green" />
-                        <img src="IconBlue.png" alt="Blue" />
-                        <img src="IconYellow.png" alt="Yellow" />
-                        <img src="IconRed.png" alt="Red" />
-                        <img src="IconGrey.png" alt="Grey" /></td>
+                                <center><img src="images/IconGreen.png" alt="Green" />
+                        <img src="images/IconBlue.png" alt="Blue" />
+                        <img src="images/IconYellow.png" alt="Yellow" />
+                        <img src="images/IconRed.png" alt="Red" />
+                        <img src="images/IconGrey.png" alt="Grey" /></td>
                         </center>
                         </tr>
-                            
+                        <!--
+                        <tr>
+                          <td colspan="3" ng-hide="eventExpandToggle">This is extra info!<br /><br />You couldn't see this before! <br />
+                          WOOOO!!!!<br />Does this work<br />
+                        {{ eventExpandToggle }}</td></tr> -->
+
+
                     </table>
-                    
+                    <hr>
+
                     <!--
                     <img src="EventIcon.png" alt="Crash"/>
                     <div class="EventText">
@@ -83,21 +118,21 @@
                 <div id="catButton" onclick="categoryToggle(this)">Weeknights</div>
             </h5>
 
-            <p style="line-height:0.5">or<p />        
+            <p style="line-height:0.5">or<p />
 
             <table class="sliderTable">
                 <tr>
                     <td class="sliderValue">From&nbsp; </td>
-                    <td class="sliderBar">             
+                    <td class="sliderBar">
                         <input class="dateTextBox" type="text" value="Select Date" id="datepicker">
                     </td>
                 </tr>
                 <tr>
                     <td>To </td>
-                    <td class="sliderBar">             
+                    <td class="sliderBar">
                         <input class="dateTextBox" type="text" value="Select Date" id="datepicker2">
                     </td>
-                </tr>            
+                </tr>
             </table>
 
             <br />
@@ -111,35 +146,35 @@
                 <div id="catButton" onclick="categoryToggle(this)">Ceilidh</div>
             </h5>
 
-            <h3>Max Price</h3>              
+            <h3>Max Price</h3>
             <table class="sliderTable">
                 <tr>
                     <td class="slider">
-                        <input class="sliderBar" type="range" id="slider" value="10" min="0" max="100" step="1"
-                        oninput="sliderChange(th is.value)">
+                        <input class="sliderBar" type="range" id="slider" value="10" min="0" max="100" step="5"
+                        oninput="sliderChange(this.value)">
                      </td>
                      <td class="sliderValue">
                         <h3>£<output id="output">10</output></h3>
                      </td>
                 </tr>
-            </table>       
+            </table>
             <br />
 
             <h3><input type="submit" class="updateSearchButton" value="Update Search"></h3>
         </div>
 
     </div>
-	
-		
+
+
 		<!-- Javascripty Bits and Pieces -->
-    
+
     <script src="pikaday.js"> // Pikadaty is the Calendar Widget</script>
-    <script>        
+    <script>
         // retrieving value of price slider
         function sliderChange(val) {
             document.getElementById('output').innerHTML = val;
         }
-        
+
         // changing background colour of category buttons
         // need to add boolean toggle to distinguish on/off when submitted
         function categoryToggle(divObj) {
@@ -148,9 +183,9 @@
             }
             else {
                 divObj.style.background = "antiquewhite";
-            }                 
-        }   
-        
+            }
+        }
+
         var datePickerFrom = new Pikaday(
         {
             field: document.getElementById('datepicker'),
@@ -159,7 +194,7 @@
             maxDate: new Date(2020, 12, 31),
             yearRange: [2000,2020]
         });
-        
+
         var datePickerTo = new Pikaday(
         {
             field: document.getElementById('datepicker2'),
@@ -168,19 +203,19 @@
             maxDate: new Date(2020, 12, 31),
             yearRange: [2000,2020]
         });
-        
-        
-        // to remove scroll bar from main events window 
+
+
+        // to remove scroll bar from main events window
         var parent = document.getElementById('container1');
         var child = document.getElementById('container2');
         child.style.paddingRight = child.offsetWidth - child.clientWidth + "px";
-        
-        
-        
-        
+
+
+
+
         // Menu Sticky Bit
-        
-        
+
+
 
     </script>
     </body>

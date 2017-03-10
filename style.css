@@ -2,11 +2,11 @@
 
 
 @media only screen and (max-device-width: 750px) {
-	
+
     #menu {
 
         width: 80% !important;
-        position:  fixed !important;      
+        position:  fixed !important;
         top: 0 !important;
         z-index: 2 !important;
         transition: all linear 0.3s !important;
@@ -21,9 +21,9 @@
 
     #eventsContainer {
         width: 100% !important;
-        
+
     }
-    
+
     .Event {
         overflow-x: hidden !important;
         border-radius: 0 !important;
@@ -34,13 +34,14 @@
     .openMobileMenuButton {
         display: inline !important;
     }
-    
+
     body {
         font-size: 80% !important;
-    
+
+
     }
-    
- 
+
+
 
 }
 
@@ -48,19 +49,20 @@
 
 .openMobileMenuButton {
     float: right;
-    display: none;    
-    border-radius: 5px;    
+    display: none;
+    border-radius: 5px;
 }
 
 body {
     margin: 0 auto;
-    font-family: sans-serif;
-    background-image: url("background.png");
-    background-attachment: fixed;   
+    font-family: Montserrat;
+  //  background-image: url("images/background.png");
+		background-color: floralwhite;
+    background-attachment: fixed;
 }
 
 #Header {
-    background-image: url("header.png");
+    background-image: url("images/header.png");
     background-repeat: repeat-y;
     height: 10%;
     min-height: 100px;
@@ -82,7 +84,7 @@ body {
     height: 10%;
     width: 100%;
     min-height: 100px;
-    
+
 }
 
 
@@ -96,8 +98,8 @@ position: relative;
    width: 75%;
     left: 0;
     float: left;
-    
-    
+
+
 }
 
 
@@ -105,70 +107,59 @@ position: relative;
 	width: 97%;
     padding: 0.5em;
 	margin: 1%;
-    
+
     background-color: floralwhite;
     opacity: 0.9;
     border-radius: 0.5em;
+		transition: all linear 3s;
+}
 
 
+.moreEventInfo {
+	display: inline;
 }
 
 .eventsTable {
     width: 100%;
-    
+
 }
 
-
+hr {
+	display: block;
+ margin-top: 1em;
+ margin-bottom: 1em;
+ margin-left: auto;
+ margin-right: auto;
+ border-style: solid;
+ border-width: 3px;
+ background-image: url("images/header.png");
+}
 .eventImg {
     width: 20%;
     padding-right: 1em;
-    
+		vertical-align: top;
 }
 
 .eventImg img {
     width: 100%;
-    
 }
 
-
+.eventIcons {
+	vertical-align: top;
+	width: 10%;
+}
 .eventText {
     vertical-align: top;
-    
-    
+
 }
 
-.eventText h2 {
+.eventText h1, h2, h3, h4 {
     margin: 0;
 }
 
 
-
-
-.EventText {
-    float: left;
-    margin-left: 20px;
-    overflow: hidden;
-    width: 54%;
-    Color: #d4145a;
-}
-
-.EventTitle {
-    color: #4d4d4d;
-    background-color: #4d4d4d;
-    font-size: 48px;
-    width: 1000px;
-    padding-left: 5px;
-}
-
-
-
-.Event hr {
-    float: bottom;
-}
-
-
 #Calendar {
-    color: white; 
+    color: white;
     background-color: #4d4d4d;
     margin: 0 auto;
     height: 100vw;
@@ -186,33 +177,33 @@ hr {
 /* Menu Stuff */
 
  #menu {
-	
+
 	 width: 20%;
-	 
+position: fixed;
 	 background-color: darkslategray;
 	 min-height: 100vh;
-     
+
 	 color: white;
 	 padding: 1% 2% 1% 2%;
     //position: fixed;
      right: 0;
      top: 100px;
      float: right;
-     
-	
-	 
+
+
+
  }
   #menuMobile {
 	 float: right;
 	 width: 100%;
 	 background-color: green;
-	 
+
 	 color: white;
 	 padding: 1% 5% 3% 5%;
 	 display: none;
-	 
+
  }
- 
+
  .dateTextBox {
 	 border-radius: 2px;
 	 padding: 0.5em;
@@ -221,7 +212,7 @@ hr {
 	 width: 90%;
  }
 
- 
+
  .updateSearchButton {
 	 border-radius: 2px;
 	 background-color: antiquewhite;
@@ -230,26 +221,26 @@ hr {
 	 font-size: 120%;
 	 width: 100%;
  }
- 
+
  .updateSearchButton:hover {
 	 background-color: lightslategray;
  }
- 
+
  .sliderTable {
-	 width: 100%;  
+	 width: 100%;
 	 line-height: 0;
-		 
+
  }
  .slider {
 	 width: 85%;
 
  }
  .sliderBar {
-	 width: 100%;            
+	 width: 100%;
  }
  .sliderValue {
   text-align: right;
-	
+
  }
 
  #catButton {
@@ -263,4 +254,8 @@ hr {
 	 line-height: 2.5;
 
  }
- 
+
+ h1 {
+	 font-family: Montserrat;
+	 font-style: semi-bold;
+ }
