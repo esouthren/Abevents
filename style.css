@@ -56,9 +56,9 @@
 body {
     margin: 0 auto;
     font-family: Montserrat;
-  //  background-image: url("images/background.png");
+
 		background-color: floralwhite;
-    background-attachment: fixed;
+    font-size: 130%;
 }
 
 #Header {
@@ -75,7 +75,7 @@ body {
 
 #Header img {
     height: 95%;
-    margin: 0.5em 0em 0.5em 2em;
+    margin: 0.5em 0em 0.5em 1em;
 }
 
 
@@ -107,27 +107,56 @@ position: relative;
 	width: 97%;
     padding: 0.5em;
 	margin: 1%;
-
+        margin-left: 1.5em;
     background-color: floralwhite;
     opacity: 0.9;
     border-radius: 0.5em;
-		transition: all linear 3s;
+    min-height: 10px;
+    transition: height 3s ease-in-out;
 }
 
 
-.moreEventInfo {
-	display: inline;
+
+ .Event h1 {
+	 font-family: Montserrat;
+	 font-style: semi-bold;
+     color: #E70B3A;
+ }
+
+.Event h2 {
+    color: #6E0251;
+    font-style: semi-bold;
 }
+
 
 .eventsTable {
     width: 100%;
 
 }
 
+  .animate-show {
+ 
+    opacity:1;
+ 
+  }
+
+  .animate-show.ng-hide-add.ng-hide-add-active,
+  .animate-show.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+  }
+
+  .animate-show.ng-hide {
+
+    opacity:0;
+    padding:0;
+  }
+
+
 hr {
 	display: block;
  margin-top: 1em;
- margin-bottom: 1em;
+ margin-bottom: 0.5em;
  margin-left: auto;
  margin-right: auto;
  border-style: solid;
@@ -146,7 +175,11 @@ hr {
 
 .eventIcons {
 	vertical-align: top;
-	width: 10%;
+	width: 20%;
+}
+
+.eventIcons img {
+    padding: 0em 1em 1em 1em;
 }
 .eventText {
     vertical-align: top;
@@ -179,13 +212,13 @@ hr {
  #menu {
 
 	 width: 20%;
-position: fixed;
-	 background-color: darkslategray;
+     position: fixed;
+	 background-image : url("images/background2.png");
 	 min-height: 100vh;
 
 	 color: white;
 	 padding: 1% 2% 1% 2%;
-    //position: fixed;
+  
      right: 0;
      top: 100px;
      float: right;
@@ -255,7 +288,3 @@ position: fixed;
 
  }
 
- h1 {
-	 font-family: Montserrat;
-	 font-style: semi-bold;
- }

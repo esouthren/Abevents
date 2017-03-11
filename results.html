@@ -7,10 +7,11 @@
         <link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="pikaday.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
-		<script src="jsController.js"></script>
-		<script src="angularHardcopy.js"></script>
+          <script src="http://code.angularjs.org/1.2.0rc1/angular-animate.min.js"></script>
+        <script src="angularHardcopy.js"></script>
         <script src="angularAnimate.js"></script>
+		<script src="jsController.js"></script>
+		
 
         <!-- Fonts! -->
         <link rel="stylesheet" type="text/css"
@@ -24,7 +25,7 @@
 	<div ng-app="abEvents" ng-controller="abEventsController">
 
 		<div id="Header">
-            <img src="images/logo.png" alt="Logo"/>
+            <img src="images/logoWhite.png" alt="Logo"/>
             <button class="openMobileMenuButton" ng-click="toggleMenu()" >Menu</button>
 
 		</div>
@@ -40,67 +41,58 @@
                         <tr>
                             <td class="eventImg"><img src="images/{{ event.image}}"</td>
                             <td class="eventText">
-                                <h1>{{ event.name}}</h1>
+                                <h1>{{ event.name.toUpperCase()}}</h1>
                                 <h2>{{ event.location }}</h2>
+                               
                                 <br />
-                                <h3>{{ event.date }} </h3>
-                                <br />
-                                <h3>Time: {{event.time}}</h3>
-                                <br />
-                                <h3>Price: £{{ event.price }}</h3>
-                                <br />
+                                                            
+                                <div ng-show="!showDetails"  class="animate-show">
+                                    <!-- Show first 150 characters of description -->
+                                    {{ event.description.slice(0,150) }}...
+                                </div>
+                                
 
+                              
 
-
-                                <p class="moreEventInfo" ng-show="!showDetails"></p>
-
-                                <p class="moreEventInfo" ng-show="showDetails">
+                                <div class="animate-show" ng-show="showDetails">
+                                    
                                     <!-- Extra information when expanded -->
                                     {{ event.description }}
                                     <br /><br />
+                                    <h3>{{ event.date }} </h3>
+                    
+                                <h3>Time: {{event.time}}</h3>
+                             
+                                <h3>Price: £{{ event.price }}</h3> 
+                                    <br />
 
-
-                                    <a href="#" ng-click="showDetails=!showDetails"><</a>
-                                    </p>
-                                <a href="#" ng-show="!showDetails" ng-click="showDetails=!showDetails">></a>
+                                   
+                                        <center>
+                                    
+                                    <img src="images/collapse.png" width="10%" ng-show="showDetails" ng-click="showDetails=!showDetails" />
+                                        </center>
+                                    </div>
+                          <center>
+                              <br /><br />
+                                <img src="images/expand.png" width="10%" ng-show="!showDetails"  ng-click="showDetails=!showDetails"></center>
+                             
 
                           </td>
 
                             <td class="eventIcons">
                                 <center><img src="images/IconGreen.png" alt="Green" />
-                        <img src="images/IconBlue.png" alt="Blue" />
-                        <img src="images/IconYellow.png" alt="Yellow" />
-                        <img src="images/IconRed.png" alt="Red" />
-                        <img src="images/IconGrey.png" alt="Grey" /></td>
-                        </center>
+                                <img src="images/IconBlue.png" alt="Blue" />
+                                <img src="images/IconYellow.png" alt="Yellow" />
+                                <img src="images/IconRed.png" alt="Red" />
+                                <img src="images/IconGrey.png" alt="Grey" />                                 
+                                </center>
+                            </td>
                         </tr>
-                        <!--
-                        <tr>
-                          <td colspan="3" ng-hide="eventExpandToggle">This is extra info!<br /><br />You couldn't see this before! <br />
-                          WOOOO!!!!<br />Does this work<br />
-                        {{ eventExpandToggle }}</td></tr> -->
-
+                       
 
                     </table>
                     <hr>
 
-                    <!--
-                    <img src="EventIcon.png" alt="Crash"/>
-                    <div class="EventText">
-                        <div class="EventTitle">{{ event }} </div>
-                        <div class="EventLocation">Location</div>
-                        <p>
-
-                        </p>
-                    </div>
-                    <div class="EventIcons">
-                        <img src="IconGreen.png" alt="Green" />
-                        <img src="IconBlue.png" alt="Blue" />
-                        <img src="IconYellow.png" alt="Yellow" />
-                        <img src="IconRed.png" alt="Red" />
-                        <img src="IconGrey.png" alt="Grey" />
-                    </div>
--->
                 </div>
 
 
