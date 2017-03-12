@@ -134,6 +134,7 @@ input[type='radio'] {
     padding: 2px;
     margin-right: 10px;
     text-align: center;
+    border-radius: 50%;
 }
 
 
