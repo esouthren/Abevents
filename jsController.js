@@ -3,10 +3,14 @@ var abEvents = angular.module("abEvents", ['ngAnimate']);
 abEvents.controller("abEventsController", function($scope) {
 
     // toggles visibility of menu on mobile devices
-	$scope.mobileMenuToggle = false;
+		$scope.mobileMenuToggle = false;
+	if (window.innerWidth < 750) {
+	$scope.mobileMenuToggle = true;
+}
+
 
 	$scope.eventExpandToggle = true;
-    
+
     // event collapsing animation variable
     $scope.isCollapsed = false;
 
@@ -22,7 +26,10 @@ abEvents.controller("abEventsController", function($scope) {
 			time: "2300 - 0300",
 			description: $scope.lorum,
 			price: 5,
-			image: "EventIcon2.jpg"
+			image: "EventIcon2.jpg",
+			iconAge: "iconParents.png",
+			iconCost: "iconFree.png",
+			iconParking: "iconParking.png"
 		},
 		{
 			name: "Rare Thursdays",
@@ -31,8 +38,11 @@ abEvents.controller("abEventsController", function($scope) {
 			time: "7900 - 1202",
 			description: $scope.lorum,
 			price: 0,
+			image: "EventIcon.jpg",
 
-			image: "EventIcon.jpg"
+			iconAge: "icon18.png",
+			iconCost: "iconPay.png",
+			iconParking: "iconParking.png"
 		},
 		{
 			name: "Crash Wednesdays",
@@ -41,7 +51,11 @@ abEvents.controller("abEventsController", function($scope) {
 			time: "2300 - 0300",
 			description: $scope.lorum,
 			price: 5,
-			image: "EventIcon2.jpg"
+			image: "EventIcon2.jpg",
+
+			iconAge: "icon18.png",
+			iconCost: "iconPay.png",
+			iconParking: "iconParking.png"
 		},
 		{
 			name: "Crash Wednesdays",
@@ -50,7 +64,11 @@ abEvents.controller("abEventsController", function($scope) {
 			time: "2300 - 0300",
 			description: $scope.lorum,
 			price: 5,
-			image: "EventIcon2.jpg"
+			image: "EventIcon2.jpg",
+
+			iconAge: "icon18.png",
+			iconCost: "iconPay.png",
+			iconParking: "iconParking.png"
 		}
 	];
 

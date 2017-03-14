@@ -14,9 +14,20 @@
         padding: 1em !important;
     }
 
+#Header {
+
+ background-size: 100% 100% !important;
+ }
+
     #menu.ng-hide {
         right: -300px !important;
     }
+
+    .openMobileMenuButton {
+
+        display: inline !important;
+    }
+
 
 
     #eventsContainer {
@@ -28,17 +39,22 @@
         overflow-x: hidden !important;
         border-radius: 0 !important;
         left: 0 !important;
-        margin: 1% 0% 1% 0% !important;
+        margin: 0.0% 0% 1% 0% !important;
     }
 
-    .openMobileMenuButton {
-        display: inline !important;
+    .eventIcons img {
+        padding: 0em 0.5em 0.5em 0.5em !important;
+        width: 70% !important;
     }
+
 
     body {
         font-size: 80% !important;
+    }
 
-
+    #Header {
+      height: 8% !important;
+      min-height: 80px !important;
     }
 
 
@@ -46,12 +62,6 @@
 }
 
 /* Main Screen Rules */
-
-.openMobileMenuButton {
-    float: right;
-    display: none;
-    border-radius: 5px;
-}
 
 body {
     margin: 0 auto;
@@ -63,7 +73,9 @@ body {
 
 #Header {
     background-image: url("images/header.png");
-    background-repeat: repeat-y;
+   
+	background-repeat: no-repeat;
+
     height: 10%;
     min-height: 100px;
     position: fixed;
@@ -73,10 +85,12 @@ body {
     z-index: 1;
 }
 
-#Header img {
+.headerLogo {
     height: 95%;
     margin: 0.5em 0em 0.5em 1em;
 }
+
+
 
 
 
@@ -87,6 +101,15 @@ body {
 
 }
 
+
+.openMobileMenuButton {
+    position: fixed;
+    right: 1em;
+    top: 1.75em;
+    border-radius: 0.2em;
+    height: 30px;
+    display: none;
+}
 
 
 
@@ -106,14 +129,15 @@ position: relative;
 .Event {
 	width: 97%;
     padding: 0.5em;
-	margin: 1%;
+
         margin-left: 1.5em;
     background-color: floralwhite;
     opacity: 0.9;
     border-radius: 0.5em;
     min-height: 10px;
-    transition: height 3s ease-in-out;
+
 }
+
 
 
 
@@ -134,23 +158,6 @@ position: relative;
 
 }
 
-  .animate-show {
- 
-    opacity:1;
- 
-  }
-
-  .animate-show.ng-hide-add.ng-hide-add-active,
-  .animate-show.ng-hide-remove.ng-hide-remove-active {
-    -webkit-transition:all linear 0.5s;
-    transition:all linear 0.5s;
-  }
-
-  .animate-show.ng-hide {
-
-    opacity:0;
-    padding:0;
-  }
 
 
 hr {
@@ -179,7 +186,8 @@ hr {
 }
 
 .eventIcons img {
-    padding: 0em 1em 1em 1em;
+    padding: 0em 1em 1em 0em;
+    width: 20%;
 }
 .eventText {
     vertical-align: top;
@@ -215,10 +223,10 @@ hr {
      position: fixed;
 	 background-image : url("images/background2.png");
 	 min-height: 100vh;
-
+   height: 100px;
 	 color: white;
 	 padding: 1% 2% 1% 2%;
-  
+
      right: 0;
      top: 100px;
      float: right;
@@ -287,4 +295,3 @@ hr {
 	 line-height: 2.5;
 
  }
-

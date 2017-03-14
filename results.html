@@ -11,7 +11,7 @@
         <script src="angularHardcopy.js"></script>
         <script src="angularAnimate.js"></script>
 		<script src="jsController.js"></script>
-		
+
 
         <!-- Fonts! -->
         <link rel="stylesheet" type="text/css"
@@ -25,9 +25,8 @@
 	<div ng-app="abEvents" ng-controller="abEventsController">
 
 		<div id="Header">
-			<a href="index.html"><img src="images/logoWhite.png" alt="Logo"/></a>
-            <button class="openMobileMenuButton" ng-click="toggleMenu()" >Menu</button>
-
+			<a href="index.html"><img src="images/logoWhite.png" class="headerLogo" alt="Logo"/></a>
+            <img src="images/menuHamburger.png" class="openMobileMenuButton"  ng-click="toggleMenu()" >
 		</div>
 
         <div id="mysticalHeaderPaddingFix">
@@ -43,52 +42,53 @@
                             <td class="eventText">
                                 <h1>{{ event.name.toUpperCase()}}</h1>
                                 <h2>{{ event.location }}</h2>
-                               
+
                                 <br />
-                                                            
-                                <div ng-show="!showDetails"  class="animate-show">
+
+                                <div ng-show="!showDetails"  >
                                     <!-- Show first 150 characters of description -->
                                     {{ event.description.slice(0,150) }}...
                                 </div>
-                                
 
-                              
+
+
 
                                 <div class="animate-show" ng-show="showDetails">
-                                    
+
                                     <!-- Extra information when expanded -->
                                     {{ event.description }}
                                     <br /><br />
                                     <h3>{{ event.date }} </h3>
-                    
+
                                 <h3>Time: {{event.time}}</h3>
-                             
-                                <h3>Price: £{{ event.price }}</h3> 
+
+                                <h3>Price: £{{ event.price }}</h3>
                                     <br />
 
-                                   
+
                                         <center>
-                                    
+
                                     <img src="images/collapse.png" width="10%" ng-show="showDetails" ng-click="showDetails=!showDetails" />
                                         </center>
                                     </div>
                           <center>
                               <br /><br />
                                 <img src="images/expand.png" width="10%" ng-show="!showDetails"  ng-click="showDetails=!showDetails"></center>
-                             
+
 
                           </td>
 
                             <td class="eventIcons">
-                                <center><img src="images/IconGreen.png" alt="Green" />
-                                <img src="images/IconBlue.png" alt="Blue" />
-                                <img src="images/IconYellow.png" alt="Yellow" />
-                                <img src="images/IconRed.png" alt="Red" />
-                                <img src="images/IconGrey.png" alt="Grey" />                                 
+                                <center>
+                                    <img src="images/{{ event.iconAge }}" alt="Green" />
+                                    <img src="images/{{ event.iconCost }}" alt="Blue" />
+                                    <img src="images/{{ event.iconParking }}" alt="Yellow" />
+                                    <img src="images/IconRed.png" alt="Red" />
+                                    <img src="images/IconGrey.png" alt="Grey" />
                                 </center>
                             </td>
                         </tr>
-                       
+
 
                     </table>
                     <hr>
@@ -99,7 +99,7 @@
         </div>
 
         <div id="menu" ng-hide="mobileMenuToggle">
-            <button class="openMobileMenuButton" ng-click="toggleMenu()" >Menu</button>
+            <img src="images/menuHamburger.png" class="openMobileMenuButton" ng-click="toggleMenu()" >
             <h1>Search Filters</h1>
 
             <label for="datepicker"><h3>Date &nbsp;&nbsp;</h3> </label>
