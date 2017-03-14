@@ -1,6 +1,18 @@
-var abEvents = angular.module("abEvents", ['ngAnimate']);
+
+
+var abEvents = angular.module("abEvents", ['ngMap', 'ngAnimate']);
+
+
 
 abEvents.controller("abEventsController", function($scope) {
+
+
+	$scope.directions = [
+          {center: [57.133680,-2.227462]},
+            {center: [57.133680,-2.227462]},
+          {center: [57.133680,-2.227462]},
+
+        ];
 
     // toggles visibility of menu on mobile devices
 		$scope.mobileMenuToggle = false;
