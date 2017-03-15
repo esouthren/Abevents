@@ -173,6 +173,7 @@ select#soflow{
 }
 
 ::selection {
+	outline: none;
 	background: #ffb7b7;
 }
 
