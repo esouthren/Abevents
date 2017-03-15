@@ -70,6 +70,12 @@ input:focus {
 }
 
 body {
+	-webkit-touch-callout: none; /* iOS Safari */
+    	-webkit-user-select: none; /* Safari */
+     	-khtml-user-select: none; /* Konqueror HTML */
+       	-moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
 	padding-top: 50px;
 	text-align: center;
 	background-image: url("images/main_background.png");
@@ -173,7 +179,6 @@ select#soflow{
 }
 
 ::selection {
-	outline: none;
 	background: #ffb7b7;
 }
 
