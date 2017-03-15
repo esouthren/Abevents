@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 .button {
   display: inline-block;
   box-sizing: border-box;
@@ -12,7 +14,9 @@
   overflow: hidden;
   border: none;
   border-radius:10px;
-  font: normal 20px/normal "Antic", Helvetica, sans-serif;
+  font-style: normal;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
   color: rgba(140, 140, 140, 1);
   text-decoration: normal;
   text-overflow: ellipsis;
@@ -40,7 +44,7 @@
 .form_frame {
 	padding-top: 5px;
 	width: 600px;
-	height: 355px;
+	height: 385px;
 	background-image: url("images/grey_background.png");
 	border-radius: 50px;
 }
@@ -48,7 +52,9 @@
 .text {
 	box-sizing: content-box;
 	border: none;
-	font: normal 25px/1 "amaranth", Helvetica, sans-serif;
+	font-style: normal;
+	font-size: 25px;
+	font-family: font-family: 'Montserrat', sans-serif;
 	color: #ffffff;
 	text-align: center;
 	text-overflow: ellipsis;
@@ -60,7 +66,7 @@
 }
 
 h1 {
-	font: normal 30px/normal "Antic", Helvetica, sans-serif;
+	font: normal 30px/normal 'Montserrat', sans-serif;
 	color: #ffffff;
 	text-align: center;
 }
@@ -71,11 +77,11 @@ input:focus {
 
 body {
 	-webkit-touch-callout: none; /* iOS Safari */
-    	-webkit-user-select: none; /* Safari */
-     	-khtml-user-select: none; /* Konqueror HTML */
-       	-moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-        user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
 	padding-top: 50px;
 	text-align: center;
 	background-image: url("images/main_background.png");
@@ -91,7 +97,7 @@ body {
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Trebuchet MS;
+	font-family:'Montserrat', sans-serif;
 	font-size:20px;
 	font-weight:bold;
 	padding:8px 30px;
@@ -107,7 +113,7 @@ body {
 }
 
 label {
-	font: normal 25px/normal "Antic", Helvetica, sans-serif;
+	font: normal 25px/normal 'Montserrat', sans-serif;
 	color: #ffffff
 }
 
@@ -156,6 +162,7 @@ select#soflow{
    background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
    background-position: 97% center;
    background-repeat: no-repeat;
+   font-family: 'Montserrat', sans-serif;
    color: #000000;
    font-size: inherit;
    margin: 20px;
@@ -174,12 +181,8 @@ select#soflow{
    background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#000000, #000000 100%, #000000);
    background-color: #000000;
    padding-left: 15px;
+   font-family: 'Montserrat', sans-serif;
    outline: none;
    border: none;
+   border-radius:10px;
 }
-
-/*
-::selection {
-	background: #ffb7b7;
-}
-*/
