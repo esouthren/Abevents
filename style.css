@@ -3,7 +3,7 @@
 @media only screen and (max-device-height: 800px) {
 	
 body {
-	font-size: 80%;
+	font-size: 75% !important;
 	}
 }
 
