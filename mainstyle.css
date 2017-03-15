@@ -169,7 +169,7 @@ select#soflow{
    overflow: hidden;
    padding: 5px 2px;
    text-overflow: ellipsis;
-   width: 300px;
+   width: 280px;
    height: 40px;
    outline: none;
    border: none;
