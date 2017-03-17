@@ -47,7 +47,7 @@
 	width: 600px;
 	height: 385px;
 	background-image: url("images/grey_background.png");
-	border-radius: 10px;
+	border-radius: 50px;
 }
 
 .text {
@@ -271,6 +271,7 @@ input[type='radio'] {
 	.form_frame {
 		width: 100%;
 		height: 450px;
+		border-radius: 25px;
 	}
 	
 	.logo {
