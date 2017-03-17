@@ -10,10 +10,12 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<link rel="stylesheet" href="mainstyle.css"/>
 	
+	<script src="jquery-3.1.1.min.js"></script>
+	
 
 </head>
 
-<body class="body" onclick="closeAll();">
+<body class="body">
 
 	<div align="center">
 	
@@ -75,6 +77,14 @@
 		</div>
 	</div>
 		<script>
+			
+			$.(body).click(function() {
+				closeAll();
+			});
+			
+			$.(".customCombo").click(function(event){
+				event.stopPropagation();
+			});
 		
             function toggleOpen(box) {
                 console.log("Toggle");
