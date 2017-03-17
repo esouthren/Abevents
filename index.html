@@ -77,14 +77,14 @@
 		</div>
 	</div>
 		<script>
-			
-			$.(".body").on('click', '.body', (function() {
+			$(".body").click(function(){
 				closeAll();
 			});
 			
-			$.(".CustomCombo").on('click', '.body', (function(event){
+			$(".CustomCombo").click(function(event){
 				event.stopPropagation();
 			});
+		
 		
             function toggleOpen(box) {
                 console.log("Toggle");
