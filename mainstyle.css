@@ -264,7 +264,6 @@ input[type='radio'] {
 	
 	h1 {
 		font: normal 25px/normal 'Montserrat', sans-serif;
-		
 	}
 	
 	
@@ -284,16 +283,18 @@ input[type='radio'] {
 	}
 	
 	.button:hover{
-		width: 225px;
+		width: 240px;
 	}
 	
 	.button:focus{
-		width: 250px;
+		width: 280px;
 	}
 	
 	.myButton {
-		padding: 8px 0px;
+		margin: 0 auto;
+		padding: 10px 10px;
 		margin-top: 15px;
 		width: 280px;
+    		height: 45px;
 	}
 }
