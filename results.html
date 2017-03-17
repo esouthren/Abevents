@@ -103,8 +103,7 @@
                                   <img src="images/{{ event.iconAge }}" alt="Green" />
                                   <img src="images/{{ event.iconCost }}" alt="Blue" />
                                   <img src="images/{{ event.iconParking }}" alt="Yellow" />
-                                  <img src="images/IconRed.png" alt="Red" />
-                                  <img src="images/IconGrey.png" alt="Grey" />
+                                  <img src="images/{{ event.categoryImg }}" />
                               </center>
                           </td>
                       </tr>
@@ -123,6 +122,10 @@
 
           <h1>Search Filters</h1>
 
+          <h3>Keywords</h3><br />
+          	<input class="keywords" placeholder="Enter keywords..." />
+
+<br /><br />
           <label for="datepicker"><h3>Date &nbsp;&nbsp;</h3> </label>
           <h5>
               <button id="catButton" onclick="categoryToggle(this)">Today</button>
@@ -159,7 +162,7 @@
               <button id="catButton" onclick="categoryToggle(this)">Ceilidh</button>
           </h5>
 
-          <h3>Max Price</h3>
+          <h3>Max Price</h3><br />
           <table class="sliderTable">
               <tr>
                   <td class="slider">
@@ -172,7 +175,7 @@
               </tr>
           </table>
           <br />
-
+          <br />
           <h3><input type="submit" class="updateSearchButton" value="Update Search"></h3>
       </div>
 
@@ -196,12 +199,17 @@
         // changing background colour of category buttons
         // need to add boolean toggle to distinguish on/off when submitted
         function categoryToggle(divObj) {
-            if (divObj.style.background == "antiquewhite") {
+
+          divObj.style.background = "purple";
+
+          /*
+            if (divObj.style.background == "coral") {
                 divObj.style.background = "lightslategray";
             }
             else {
-                divObj.style.background = "antiquewhite";
+                divObj.style.background = "coral";
             }
+            */
         }
 
         var datePickerFrom = new Pikaday(

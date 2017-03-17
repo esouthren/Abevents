@@ -1,7 +1,7 @@
 /* Rules for Smallerish screens */
 
 @media only screen and (max-device-height: 800px) {
-	
+
 body {
 	font-size: 75% !important;
 	}
@@ -23,6 +23,7 @@ body {
         transition: all linear 0.3s !important;
         border-radius: 0.5em 0em 0em 0.5em !important;
         padding: 1em !important;
+				font-size: 80% !important;
     }
 
 #Header {
@@ -74,6 +75,10 @@ body {
 
 /* Main Screen Rules */
 
+html {
+	font-family: Montserrat;
+}
+
 body {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -84,8 +89,8 @@ body {
     margin: 0 auto;
     font-family: Montserrat;
 
-		background-color: floralwhite;
-    font-size: 130%;
+		background-color: white;
+    font-size: 100%;
 }
 
 button {
@@ -241,7 +246,9 @@ hr {
 
 	 width: 20%;
      position: fixed;
-	 background-image : url("images/background2.png");
+	// background-image : url("images/background2.png");
+	background-color: black;
+
 	 min-height: 100vh;
    height: 100px;
 	 color: white;
@@ -268,7 +275,8 @@ hr {
  .dateTextBox {
 	 border-radius: 2px;
 	 padding: 0.5em;
-	 background-color: antiquewhite;
+	 background-color: white;
+	 font-family: Montserrat;
 	 border: 0;
 	 width: 90%;
  }
@@ -276,7 +284,8 @@ hr {
 
  .updateSearchButton {
 	 border-radius: 2px;
-	 background-color: antiquewhite;
+	 background-color: #e70b3a;
+	 color: white;
 	 padding: 0.5em;
 	 border: 0;
 	 font-size: 120%;
@@ -284,7 +293,7 @@ hr {
  }
 
  .updateSearchButton:hover {
-	 background-color: lightslategray;
+	 background-color: #a8033b;
  }
 
  .sliderTable {
@@ -305,11 +314,11 @@ hr {
  }
 
  #catButton {
-	 background-color: antiquewhite;
+	 background-color: #e70b3a;
 	 border-radius: 2px;
    padding: 0em 0.5em 0em 0.5em;
 	 border: 0;
-	 color: black;
+	 color: white;
 	 margin: 1%;
 	 display: inline;
 	 line-height: 2.5;
@@ -317,3 +326,18 @@ hr {
    font-size: 100%;
 
  }
+
+#catButton:focus {
+	outline: none;
+}
+
+
+.keywords {
+	background-color: white;
+	line-height: 1.5;
+	padding: 0.5em;
+	font-size: 100%;
+	width: 90%;
+	border-radius: 0.5em;
+	font-family: Montserrat;
+}

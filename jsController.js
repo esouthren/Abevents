@@ -41,7 +41,8 @@ abEvents.controller("abEventsController", function($scope) {
 			image: "EventIcon2.jpg",
 			iconAge: "iconParents.png",
 			iconCost: "iconFree.png",
-			iconParking: "iconParking.png"
+			iconParking: "iconParking.png",
+			categoryImg: "Theatre.png"
 		},
 		{
 			name: "Rare Thursdays",
@@ -54,7 +55,9 @@ abEvents.controller("abEventsController", function($scope) {
 
 			iconAge: "icon18.png",
 			iconCost: "iconPay.png",
-			iconParking: "iconParking.png"
+			iconParking: "iconParking.png",
+			categoryImg: "NightClub.png"
+
 		},
 		{
 			name: "Crash Wednesdays",
