@@ -78,11 +78,11 @@
 	</div>
 		<script>
 			
-			$.(".body").click(function() {
+			$.(".body").on('click', '.body', (function() {
 				closeAll();
 			});
 			
-			$.(".customCombo").click(function(event){
+			$.(".CustomCombo").on('click', '.body', (function(event){
 				event.stopPropagation();
 			});
 		
