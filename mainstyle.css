@@ -1,47 +1,48 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 .button {
-  display: inline-block;
-  box-sizing: border-box;
-  width: 250px;
-  height: 42px;
-  cursor: I-beam;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 0 20px;
-  overflow: hidden;
-  border: none;
-  border-radius:10px;
-  font-style: normal;
-  font-size: 20px;
-  font-family: 'Montserrat', sans-serif;
-  color: rgba(140, 140, 140, 1);
-  text-decoration: normal;
-  text-overflow: ellipsis;
-  background: rgba(40, 40, 40, 0.4);
-  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.5) inset;
-  transition: all 502ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
+	display: inline-block;
+	box-sizing: border-box;
+	width: 250px;
+	height: 42px;
+	cursor: I-beam;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 0 20px;
+	overflow: hidden;
+	border: none;
+	border-radius:10px;
+	font-style: normal;
+	font-size: 20px;
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(140, 140, 140, 1);
+	text-decoration: normal;
+	text-overflow: ellipsis;
+	background: rgba(40, 40, 40, 0.4);
+	box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.5) inset;
+	transition: all 502ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
 }
 
 .button:hover {
-  width: 300px;
-  opacity: 0.82;
-  color: rgba(181, 181, 181, 1);
-  background: rgba(0, 0, 0, 0.4);
-  transition: all 500ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
+	width: 300px;
+	opacity: 0.82;
+	color: rgba(181, 181, 181, 1);
+	background: rgba(0, 0, 0, 0.4);
+	transition: all 500ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
 }
 
 .button:focus {
-  width: 400px;
-  cursor: default;
-  padding: -13px 20px 0;
-  color: rgba(255, 255, 255, 1);
-  transition: all 601ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
+	width: 400px;
+	cursor: default;
+	padding: -13px 20px 0;
+	color: rgba(255, 255, 255, 1);
+	transition: all 601ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
 }
 
 .form_frame {
+	max-width: 100%;
 	padding-top: 5px;
 	width: 600px;
 	height: 385px;
@@ -62,7 +63,10 @@
 }
 
 .logo {
-	height: 440px;
+	max-width: 100%;
+	max-height: 100%;
+	height: 422px;
+	width: 500px;
 }
 
 h1 {
@@ -155,34 +159,139 @@ input[type='radio'] {
     box-shadow: inset 0px 0px 0px 4px #fff;
 }
 
-select#soflow{
-   -webkit-appearance: button;
-   -webkit-padding-start: 2px;
-   -webkit-user-select: none;
-   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
-   background-position: 97% center;
-   background-repeat: no-repeat;
-   font-family: 'Montserrat', sans-serif;
-   color: #000000;
-   font-size: inherit;
-   margin: 20px;
-   overflow: hidden;
-   padding: 5px 2px;
-   text-overflow: ellipsis;
-   width: 280px;
-   height: 40px;
-   outline: none;
-   border: none;
-   border-radius:10px;
+.CustomCombo {
+    /*center the whole thing*/
+    margin: 0 auto;
+    
+    /*Colour of the combo box when closed*/
+    background-color: black;
+
+    cursor:pointer;
+    position: relative;
+    /*you can change the width and height, just REMEMBER to change it for the CustomComboOpen as well*/
+    width: 280px;
+    height: 45px;
+    border-radius: 10px;
+	margin-top: 15px;
 }
 
-select#soflow{
-   color: #fff;
-   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#000000, #000000 100%, #000000);
-   background-color: #000000;
-   padding-left: 15px;
-   font-family: 'Montserrat', sans-serif;
-   outline: none;
-   border: none;
-   border-radius:10px;
+.CustomCombo p{
+    /*Default/Selected font colour and font*/
+    color: white;
+    font-family:'Montserrat', sans-serif;
+    font-size: 18px;
+    cursor:pointer;
+    margin-top: 0px;
+    padding: 10px 10px;
+}
+
+.CustomCombo ul{
+    list-style-type: none;
+    position: absolute;
+    display: none;
+	cursor:pointer;
+}
+
+.CustomCombo ul li {
+    display: none;
+}
+
+.CustomComboOpen {
+    margin: 0 auto;
+    
+    /*Background colour of the current selected element when open*/
+    background-color: black;
+    
+    position: relative;
+    
+    /*You can change this just remember to change the same one for CustomCombo*/
+    width: 280px;
+    height: 45px;
+    border-radius: 10px;
+	margin-top: 10px;
+	cursor:pointer;
+}
+
+.CustomComboOpen p {
+    /*selected option colour and font*/
+    color: white;
+    font-family:'Montserrat', sans-serif;
+    
+    font-size: 18px;
+    
+    margin: 0px;
+    padding: 5px 10px;
+    padding-bottom: 2px;
+	cursor:pointer;
+}
+
+.CustomComboOpen ul{
+    list-style-type: none;
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+	cursor:pointer;
+    
+    border-radius: 10px;
+    
+    /*Colour of the menu when open*/
+    background-color: black;
+}
+
+.CustomComboOpen ul li{
+    position: relative;
+    padding: 4px 10px;
+    
+    /*Options font colour anf font*/
+    color: white;
+    font-family:'Montserrat', sans-serif;
+    font-size: 18px;
+	cursor:pointer;
+    
+    border-radius: 5px;
+    
+    background-color: transparent;
+}
+
+.CustomComboOpen ul li:hover {
+    /*Highlighted colour when picking an option*/
+    background-color: #303030;
+}
+
+@media screen and (min-width: 150px) and (max-width: 650px) {
+	
+	h1 {
+		font: normal 25px/normal 'Montserrat', sans-serif;
+		
+	}
+	
+	
+	.form_frame {
+		width: 100%;
+		height: 450px;
+	}
+	
+	.logo {
+		width: 390px;
+		height: 330px;
+	}
+	
+	.button{
+		width: 200px;
+	}
+	
+	.button:hover{
+		width: 250px;
+	}
+	
+	.button:focus{
+		width: 300px;
+	}
+	
+	.myButton {
+		
+		margin-top: 15px;
+		width: 250px;
+	}
 }
