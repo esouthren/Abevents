@@ -296,5 +296,6 @@ input[type='radio'] {
 		margin-top: 15px;
 		width: 280px;
     		height: 45px;
+		border-radius: 10px;
 	}
 }
