@@ -259,15 +259,15 @@ input[type='radio'] {
         	width: auto;
         }
 	
-	.button {
+	.search_box {
 		width: 200px;
 	}
 	
-	.button:hover {
+	.search_box:hover {
 		width: 250px;
 	}
 	
-	.button:focus {
+	.search_box:focus {
 		width: 300px;
 	}
 	
