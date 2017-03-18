@@ -260,15 +260,15 @@ input[type='radio'] {
         }
 	
 	.search_box {
-		width: 200px;
-	}
-	
-	.search_box:hover {
 		width: 250px;
 	}
 	
+	.search_box:hover {
+		width: 280px;
+	}
+	
 	.search_box:focus {
-		width: 300px;
+		width: 320px;
 	}
 	
 	.searchButton {
