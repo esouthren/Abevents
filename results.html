@@ -199,17 +199,11 @@
         // changing background colour of category buttons
         // need to add boolean toggle to distinguish on/off when submitted
         function categoryToggle(divObj) {
-
-          divObj.style.background = "purple";
-
-          /*
-            if (divObj.style.background == "coral") {
-                divObj.style.background = "lightslategray";
+            if (divObj.style.backgroundColor == "purple") {
+                divObj.style.backgroundColor = "#e70b3a";
+            } else {
+                divObj.style.backgroundColor = "purple";
             }
-            else {
-                divObj.style.background = "coral";
-            }
-            */
         }
 
         var datePickerFrom = new Pikaday(
