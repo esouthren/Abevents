@@ -1,9 +1,18 @@
 /* Rules for Smallerish screens */
 
-@media only screen and (max-device-height: 800px) {
+@media screen and (max-device-height: 800px) {
 
-body {
+#menu {
 	font-size: 75% !important;
+	}
+    
+
+}
+
+@media only screen and (max-device-height: 900px) {
+
+#menu {
+	font-size: 70% !important;
 	}
 }
 
@@ -156,7 +165,7 @@ position: relative;
     padding: 0.5em;
 
         margin-left: 1.5em;
-    background-color: floralwhite;
+    background-color: #ffffff;
     opacity: 0.9;
     border-radius: 0.5em;
     min-height: 10px;
@@ -194,6 +203,7 @@ hr {
  border-style: solid;
  border-width: 3px;
  background-image: url("images/header.png");
+    border-radius: 1em;
 }
 .eventImg {
     width: 20%;
@@ -290,6 +300,7 @@ hr {
 	 border: 0;
 	 font-size: 120%;
 	 width: 100%;
+     font-family: Montserrat;
  }
 
  .updateSearchButton:hover {

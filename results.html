@@ -148,7 +148,7 @@
           <h3>Keywords</h3><br />
           	<input class="keywords" placeholder="Enter keywords..." />
 
-<br /><br />
+          <br /><br />
           <label for="datepicker"><h3>Date &nbsp;&nbsp;</h3> </label>
           <h5>
               <button id="catButton" onclick="categoryToggle(this)">Today</button>
@@ -214,6 +214,8 @@
 
     <script src="pikaday.js"> // Pikadaty is the Calendar Widget</script>
     <script>
+        
+        var calendarPick = false;
         // retrieving value of price slider
         function sliderChange(val) {
             document.getElementById('output').innerHTML = val;
@@ -222,11 +224,21 @@
         // changing background colour of category buttons
         // need to add boolean toggle to distinguish on/off when submitted
         function categoryToggle(divObj) {
+            
+            calendarPick = true;
+            
             if (divObj.style.backgroundColor == "purple") {
                 divObj.style.backgroundColor = "#e70b3a";
+                divObj.style.opacity = 1;
             } else {
                 divObj.style.backgroundColor = "purple";
+                divObj.style.opacity = 0.5;
             }
+        }
+        
+        // highlights either calendar when clicking the date picker
+        function dateSelectMethod() {
+            
         }
 
         var datePickerFrom = new Pikaday(
