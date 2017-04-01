@@ -4,7 +4,35 @@ var abEvents = angular.module("abEvents", ['ngMap', 'ngAnimate']);
 
 
 
-abEvents.controller("abEventsController", function($scope) {
+abEvents.controller("abEventsController", function($scope, $http) {
+    
+    
+    var params = {
+            
+            // this is where the user input is submitted
+            "city": "New york",
+            "state": "NY",
+            "country": "United States",
+            "page": "0",
+            "sdate": "{dateTime}",
+            "edate": "{dateTime}",
+            "category": "{string}",
+        };
+    // API call
+ 
+    
+    $http ({
+        url: 'https://www.eventbriteapi.com/v3/events/search', 
+        params: {
+            
+            // this is where the user input is submitted
+            "token": "G7VABS45YU62M37KJ2I4",
+        },
+        method: "POST",
+       
+      }).success(function(response){
+        console.log(response)
+      });
 
 
 	$scope.directions = [
@@ -87,6 +115,7 @@ abEvents.controller("abEventsController", function($scope) {
 		}
 	];
 
+    $scope.apiData = "hey dere";
 
     // what
 	$scope.test = "What";
@@ -95,7 +124,9 @@ abEvents.controller("abEventsController", function($scope) {
 	$scope.toggleMenu = function() {
 		$scope.mobileMenuToggle = ($scope.mobileMenuToggle) ? false : true;
 	}
-
+    
+    
+    // expand the event to display more descriptive text
 	$scope.expandEvent = function() {
 
 		$scope.eventExpandToggle = !$scope.eventExpandToggle;

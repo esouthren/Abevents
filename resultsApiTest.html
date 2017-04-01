@@ -15,6 +15,7 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.3.15/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="angularHardcopy.js"></script>
     <script src="angularAnimate.js"></script>
 		<script src="jsController.js"></script>
@@ -72,10 +73,88 @@
 	    </div>
 
 
-              <div ng-repeat="event in testEvents" class="Event"  >
-
-
+            <!--  <div ng-repeat="event in testEvents" class="Event"  > -->
+                  <script>
+                      /*
+            $(function() {
+        var params = {
+            
+            // this is where the user input is submitted
+            "city": "New york",
+            "state": "NY",
+            "country": "United States",
+            "page": "0",
+            "sdate": "{dateTime}",
+            "edate": "{dateTime}",
+            "category": "{string}",
+        };
+      /*
+        var $events = $('#eventsContainer');
+        
+        $.ajax({
+            url: "https://api.allevents.in/events/list/?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","7f3028ae78924451854a93a4151e2733");
+            },
+            type: "POST",           
+            success: function(data) {              
+                var length = data.data.length;
+                
+                // for each item in the data array
+                for (var i = 0; i < 10; i++) {
+                    
+                // add data to the div called 'events'
+                    
+              
+                    
+                    
+                    var eventBlock="<table class='eventsTable'>                                 \
+                                        <tr>                                                    \
+                                        <td class='eventImg'>                                   \
+                                            <img src=" + data.data[i].banner_url + ">           \
+                                        </td> \
+                                        <td class='eventText'> \
+                                            <h1>" + data.data[i].eventname.toUpperCase() + "</h1> \
+                                            <h2>" + data.data[i].location + "</h2><br /> \             
+                                            <div ng-show='!showDetails'> \
+                                                <hr> ";
+                   
+                    $events.append(eventBlock);
+                    
+                   
+                 
+                    /* Other variables that can be displayed (apart from eventname) 
+                    categories (array, as can have multiple categories)
+                    end_time (int)
+                    end_time_display (formatted "Tue Mar 21 2017 at 07:00pm")
+                    eventname (eg "Radiohead Concert")
+                    event_url (link - redirects to allevents.in website)
+                    location: (string)
+                    start_time 
+                    start_time_display (formatted "Tue Mar 21 2017 at 0800pm")
+                    */
+                    
+                    // print all event data to the console (view by rightclicking -> inspect -> Console
+                    console.log(data.data[i]);
+                    
+          
+                }
+       
+            }
+            // Request body
+          
+        })
+        ;
+    });
+    */
+          </script>
+          
+          Do stuff with data<br />
+           {{ myWelcome }}
+                  <!--
                   <table class="eventsTable">
+                      
                       <tr>
                           <td class="eventImg"><img src="images/{{ event.image}}"</td>
                           <td class="eventText">
@@ -87,7 +166,7 @@
                               <br />
 
                               <div ng-show="!showDetails"  >
-                                  <!-- Show first 150 characters of description -->
+                           
                                   {{ event.description.slice(0,150) }}...
                               </div>
 
@@ -95,7 +174,7 @@
 
                               <div class="animate-show" ng-show="showDetails"  style="width:100%; height:100%;">
 
-                                  <!-- Extra information when expanded -->
+                    
                                   {{ event.description }}
                                   <br /><br />
                                   <h3>{{ event.date }} </h3>
@@ -103,7 +182,7 @@
                                   <h3>Price: £{{ event.price }}</h3>
                                   <br />
 
-                                  <!-- MAP -->
+                                  
                                   <div style="width: 100%; height: 100%">
                                     <ng-map zoom="15" style="width: 100%; height:200px" center="{{directions[$index].center}}"></map>
 </div>
@@ -134,7 +213,7 @@
 
                   </table>
                   <hr>
-
+-->
               </div>
 
 
