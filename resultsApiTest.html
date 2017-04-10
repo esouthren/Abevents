@@ -16,11 +16,14 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.3.15/angular.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script src="angularHardcopy.js"></script>
+   
     <script src="angularAnimate.js"></script>
 		<script src="jsController.js"></script>
+        
     <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
     <script src="https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.js"></script>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular-sanitize.js"> // this formats the event description text properly</script>
 
 
 
@@ -72,113 +75,52 @@
 		</div>
 	    </div>
 
-
-            <!--  <div ng-repeat="event in testEvents" class="Event"  > -->
-                  <script>
-                      /*
-            $(function() {
-        var params = {
-            
-            // this is where the user input is submitted
-            "city": "New york",
-            "state": "NY",
-            "country": "United States",
-            "page": "0",
-            "sdate": "{dateTime}",
-            "edate": "{dateTime}",
-            "category": "{string}",
-        };
-      /*
-        var $events = $('#eventsContainer');
         
-        $.ajax({
-            url: "https://api.allevents.in/events/list/?" + $.param(params),
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","7f3028ae78924451854a93a4151e2733");
-            },
-            type: "POST",           
-            success: function(data) {              
-                var length = data.data.length;
-                
-                // for each item in the data array
-                for (var i = 0; i < 10; i++) {
-                    
-                // add data to the div called 'events'
-                    
+                <div ng-repeat="event in response" >
               
-                    
-                    
-                    var eventBlock="<table class='eventsTable'>                                 \
-                                        <tr>                                                    \
-                                        <td class='eventImg'>                                   \
-                                            <img src=" + data.data[i].banner_url + ">           \
-                                        </td> \
-                                        <td class='eventText'> \
-                                            <h1>" + data.data[i].eventname.toUpperCase() + "</h1> \
-                                            <h2>" + data.data[i].location + "</h2><br /> \             
-                                            <div ng-show='!showDetails'> \
-                                                <hr> ";
-                   
-                    $events.append(eventBlock);
-                    
-                   
+      
+             <!-- 
+            things:
+                event.name.text
+                event.description.text
+                event.logo.url
+                event.start.local //start time
+                event.end.local // end time
+                event.url // link
+                event.is_free // boolean for price or free
+                
+-->
+
+
                  
-                    /* Other variables that can be displayed (apart from eventname) 
-                    categories (array, as can have multiple categories)
-                    end_time (int)
-                    end_time_display (formatted "Tue Mar 21 2017 at 07:00pm")
-                    eventname (eg "Radiohead Concert")
-                    event_url (link - redirects to allevents.in website)
-                    location: (string)
-                    start_time 
-                    start_time_display (formatted "Tue Mar 21 2017 at 0800pm")
-                    */
-                    
-                    // print all event data to the console (view by rightclicking -> inspect -> Console
-                    console.log(data.data[i]);
-                    
-          
-                }
-       
-            }
-            // Request body
-          
-        })
-        ;
-    });
-    */
-          </script>
-          
-          Do stuff with data<br />
-           {{ myWelcome }}
-                  <!--
                   <table class="eventsTable">
                       
                       <tr>
-                          <td class="eventImg"><img src="images/{{ event.image}}"</td>
-                          <td class="eventText">
+                          <td class="eventImg"><img src="{{ event.logo.url}}"</td>
+                          <td class="eventText" >
 
-                              <h1>{{ event.name.toUpperCase()}}</h1>
+                              <h1>{{ event.name.text.toUpperCase()}}</h1>
+                              <h2>{{ event.venue }}</h2>
+                               <h2>{{ event.venue.address.address_1 }}</h2>
                               <h2>{{ event.location }}</h2>
 
 
                               <br />
 
-                              <div ng-show="!showDetails"  >
+                              <div ng-show="!showDetails"   >
                            
-                                  {{ event.description.slice(0,150) }}...
+                                  <p ng-bind-html="event.description.html.slice(0,150) | trustAsHtml">...</p>
                               </div>
 
 
 
                               <div class="animate-show" ng-show="showDetails"  style="width:100%; height:100%;">
 
-                    
-                                  {{ event.description }}
+                            <p class="eventDescription" ng-bind-html="event.description.html | trustAsHtml"></p>
+                                 
                                   <br /><br />
                                   <h3>{{ event.date }} </h3>
-                                  <h3>Time: {{event.time}}</h3>
+                                  <h3>Time: {{event.start.local}}</h3>
                                   <h3>Price: £{{ event.price }}</h3>
                                   <br />
 
@@ -212,8 +154,8 @@
 
 
                   </table>
-                  <hr>
--->
+                  <hr class="eventDivider">
+
               </div>
 
 
@@ -278,7 +220,10 @@
           </table>
           <br />
           <br />
-          <h3><input type="submit" class="updateSearchButton" value="Update Search"></h3>
+          <h3><input type="submit" ng-click="apiCall()" class="updateSearchButton" value="Update Search"></h3>
+          
+
+ 
       </div>
         <div id="menuBodyCover" ng-click="toggleMenu()" ng-hide="mobileMenuToggle"></div>
     </div>
@@ -288,7 +233,7 @@
 		<!-- Javascripty Bits and Pieces -->
 
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJWi5rTDvlN7a5gAZec4509sgQO8Y1ZcY&callback=myMap"></script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJWi5rTDvlN7a5gAZec4509sgQO8Y1ZcY&callback=myMap"></script> -->
 
 
     <script src="pikaday.js"> // Pikadaty is the Calendar Widget</script>

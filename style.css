@@ -209,7 +209,7 @@ position: relative;
 
 
 
-hr {
+#eventDivider {
 	display: block;
  margin-top: 1em;
  margin-bottom: 0.5em;
@@ -223,9 +223,13 @@ hr {
 }
 .eventImg {
     width: 15%;
-
+    max-height: 100px;
     padding-right: 1em;
     vertical-align: top;
+}
+
+.eventDescription img {
+    max-height: 50px;
 }
 
 .eventImg img {
