@@ -129,10 +129,9 @@ event.venue.longitude
 
                                   
                                   <div style="width: 100%; height: 100%">
-                                      
-                                        <ng-map map-lazy-load-params="{{googleMapsUrl}}" trigger-resize="true" id="map" zoom="15" style="width: 100%; height: 30%" centered="true" center="{{event.venue.full_address}}">
-                                            
-                                <marker position="{{event.venue.full_address}}" optimized="false"
+                                      <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfuDPoJxdxznICYSaRXSh6JVWcFXOv9MI" >
+                                        <ng-map trigger-resize="true" id="map" zoom="15" style="width: 100%; height: 30%" centered="true" center="{{event.venue.full_address}}">
+                                            <marker position="{{event.venue.full_address}}" optimized="false"
     title="{{event.location}}"></marker>      
                                             
     <!-- icon="{   // insert this into <marker position>, can't get it to resize whilst centering on the address
@@ -140,12 +139,10 @@ event.venue.longitude
         scaledSize:[100,100],
         origin: [10,10],
         anchor: [50,50]
-      }" -->
-                                      </ng-map>
-
-                                   
+}" -->                              </ng-map>
+                                      </div>                                   
                                     </div>
-<br />
+                                        <br />
                                   <center>
                                     <img src="images/collapse.png" width="10%" ng-show="showDetails" ng-click="showDetails=!showDetails" />
                                   </center>
@@ -310,11 +307,7 @@ event.venue.longitude
         child.style.paddingRight = child.offsetWidth - child.clientWidth + "px";
 
 
-
-
         // Menu Sticky Bit
-
-
 
     </script>
 	    <script>
@@ -332,11 +325,6 @@ event.venue.longitude
             console.log("hide");
         }
     </script>
-
-
-
-
-
 
     </body>
 </html>

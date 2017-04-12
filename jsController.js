@@ -13,7 +13,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
     $scope.test = "hey dere";    
     $scope.response = "API response!";    
 	$scope.eventExpandToggle = true;
-   $scope.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfuDPoJxdxznICYSaRXSh6JVWcFXOv9MI";
+   
     
     // API call 
     $scope.apiCall = function() {
@@ -35,7 +35,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
             "latitude": 57.146114,
             "longitude": -2.091476,
             "radius": 15,
-            "category": "", // keywords be going here
+            "category": "entertainment", // keywords be going here
             
             // these are the only search parameters for the API. So, further refining (like dates)
             // will need to be applied to the data returned below.
