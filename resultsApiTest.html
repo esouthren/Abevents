@@ -75,59 +75,76 @@
 		</div>
 	    </div>
 
+                 
+                      <!-- Show this while the API loads -->
+                      <div ng-show="loading" style="margin-top: 10em; text-align:center"><h1>I load, therefore I am</h1><h3>plz make me into a pretty gif</h3></div>  
+
         
                 <div ng-repeat="event in response" >
               
       
              <!-- 
             things:
-                event.name.text
-                event.description.text
-                event.logo.url
-                event.start.local //start time
-                event.end.local // end time
-                event.url // link
-                event.is_free // boolean for price or free
+               event.banner_url // imgage
+                event.eventname // name 
+                event.location // venue
+                event.start_time // I don't know how this is formattted
+                event.start_time_display // web friendly date
+event.venue.latitude
+event.venue.longitude
                 
 -->
-
-
+                     
                  
                   <table class="eventsTable">
+            
                       
                       <tr>
-                          <td class="eventImg"><img src="{{ event.logo.url}}"</td>
+                          <td class="eventImg"><img src="{{ event.thumb_url}}"</td>
                           <td class="eventText" >
 
-                              <h1>{{ event.name.text.toUpperCase()}}</h1>
-                              <h2>{{ event.venue }}</h2>
-                               <h2>{{ event.venue.address.address_1 }}</h2>
+                              <h1>{{ event.eventname.toUpperCase()}}</h1>
                               <h2>{{ event.location }}</h2>
-
-
                               <br />
 
                               <div ng-show="!showDetails"   >
-                           
+                            {{ event.description }}
                                   <p ng-bind-html="event.description.html.slice(0,150) | trustAsHtml">...</p>
                               </div>
 
 
 
-                              <div class="animate-show" ng-show="showDetails"  style="width:100%; height:100%;">
+                              <div class="animate-show" ng-if="showDetails"  style="width:100%; height:100%;">
 
                             <p class="eventDescription" ng-bind-html="event.description.html | trustAsHtml"></p>
                                  
                                   <br /><br />
-                                  <h3>{{ event.date }} </h3>
-                                  <h3>Time: {{event.start.local}}</h3>
-                                  <h3>Price: £{{ event.price }}</h3>
+                                  <h3>Date: {{ event.start_time_display.slice(0,10)}} </h3>
+                                  <h3>Time: {{event.start_time_display.slice(-8)}}</h3>
+                          
+                                  
+                                  <h3>{{ event.priceMessage }}</h3>
+                                 
                                   <br />
 
                                   
                                   <div style="width: 100%; height: 100%">
-                                    <ng-map zoom="15" style="width: 100%; height:200px" center="{{directions[$index].center}}"></map>
-</div>
+                                      
+                                        <ng-map trigger-resize="true" id="map" zoom="15" style="width: 100%; height: 30%" centered="true" center="{{event.venue.full_address}}">
+                                            
+                                <marker position="{{event.venue.full_address}}" optimized="false"
+    title="{{event.location}}"></marker>      
+                                            
+    <!-- icon="{   // insert this into <marker position>, can't get it to resize whilst centering on the address
+        url:'images/logo.png',
+        scaledSize:[100,100],
+        origin: [10,10],
+        anchor: [50,50]
+      }" -->
+                                      </ng-map>
+
+                                   
+                                    </div>
 <br />
                                   <center>
                                     <img src="images/collapse.png" width="10%" ng-show="showDetails" ng-click="showDetails=!showDetails" />
@@ -154,6 +171,7 @@
 
 
                   </table>
+                    <!-- ** the pretty lil purple bar between events -->
                   <hr class="eventDivider">
 
               </div>
@@ -161,6 +179,8 @@
 
       </div>
 
+    <!-- ********* MENU THINGS ************ -->
+        
       <div id="menu" ng-hide="mobileMenuToggle">
           <img src="images/menuHamburger.png" class="openMobileMenuButton" ng-click="toggleMenu()" >
 
