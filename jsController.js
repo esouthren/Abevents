@@ -13,7 +13,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
     $scope.test = "hey dere";    
     $scope.response = "API response!";    
 	$scope.eventExpandToggle = true;
-   
+   $scope.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfuDPoJxdxznICYSaRXSh6JVWcFXOv9MI";
     
     // API call 
     $scope.apiCall = function() {
