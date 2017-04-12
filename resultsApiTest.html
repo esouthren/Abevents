@@ -130,7 +130,7 @@ event.venue.longitude
                                   
                                   <div style="width: 100%; height: 100%">
                                       
-                                        <ng-map trigger-resize="true" id="map" zoom="15" style="width: 100%; height: 30%" centered="true" center="{{event.venue.full_address}}">
+                                        <ng-map map-lazy-load-params="{{googleMapsUrl}}" trigger-resize="true" id="map" zoom="15" style="width: 100%; height: 30%" centered="true" center="{{event.venue.full_address}}">
                                             
                                 <marker position="{{event.venue.full_address}}" optimized="false"
     title="{{event.location}}"></marker>      
