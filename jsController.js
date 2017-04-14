@@ -52,39 +52,26 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
         console.log(response);        
         console.log(response.data[1]);
             
-        // ******** let's format our data to make it more friendly looking **********   
+        // let's format our data to make it more friendly looking    
             
         // apply a pricing message to each event (checking if the event has tickets and
         // changing the message accordingly)
             
-        // loop through the data array and check data to set the Icon Variables
-        // Icons display when their respective variables are true (or false in the case of paid vs free events)
-            
+        // loop through the data array and check it's Ticketing status    
         for (var i = 0; i < response.data.length; i++) {
             
-            var e = response.data[i];
-            e.gig = false;
-            // Ticket Status
-            e.priceMessage = "";
-            if (e.has_tickets == true) {
-                e.priceMessage = "Get tickets at: " + e.tickets.ticket_url;
+            response.data[i].priceMessage = "";
+            if (response.data[i].tickets.has_tickets == true) {
+                response.data[i].priceMessage = "Get tickets at: " + response.data[i].tickets.ticket_url;
             }
             else {
-                e.priceMessage = "This event is free!";                
-            }
-                   console.log(e.categories[1]);
-            // Category
-            for (var i = 0; i < e.categories.length; i++) {
-         
-                // check categories and apply extra variables for the Icons to read
-                if (e.categories[i] === "Music") {
-                
-                    e.gig = true;
-                }
-                else if (e.categories[i] === "")
+                response.data[i].priceMessage = "This event is free!";                
             }
         }
             
+        // NOTE ********* more things we need to do to the data:
+            // get the icons displaying - I'm thinking have them all there in the HTML but displaying based on a boolean
+            // value we set here? Like if tickets.has_tickets == false.
         
         // finally, bind the data to the $scope.response variable to be used in the View bit (the HTML).    
         $scope.response = response.data;        
