@@ -77,7 +77,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
              for (var j = 0; j < e.categories.length; j++) {
                  var cat = response.data[i].categories[j];
                 console.log(cat);
-                 // when category variables are set to true, the icons for them will display on screen
+                 // check categories and apply extra variables for the Icons to read
                  switch (cat) {
                     case "Concerts":
                             break;
@@ -89,9 +89,6 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
                          break;
                      case "Comedy" :
                          e.comedy = true;
-                     case "Theatre":
-                         e.theatre = true;
-                         
                         default:
                             break;
                  }
@@ -104,9 +101,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
             if ((e.eventname.toLowerCase()).includes("ceilidh")) {
                 e.ceilidh = true;
             }
-            // formatting the event title as I can't get rid of the &amp; html in the text for some reason 
 
-           e.eventname.replace("&amp;", "&");
         }
 
         // NOTE ********* more things we need to do to the data:
