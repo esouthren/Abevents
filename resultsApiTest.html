@@ -85,20 +85,6 @@
 
                 <div ng-repeat="event in response" >
 
-
-             <!--
-            things:
-               event.banner_url // imgage
-                event.eventname // name
-                event.location // venue
-                event.start_time // I don't know how this is formattted
-                event.start_time_display // web friendly date
-event.venue.latitude
-event.venue.longitude
-
--->
-
-
                   <table class="eventsTable">
 
 
@@ -106,15 +92,17 @@ event.venue.longitude
                           <td class="eventImg"><img src="{{ event.thumb_url}}"</td>
                           <td class="eventText" >
 
-                              <h1>{{ event.eventname.toUpperCase()}}</h1>
-                              <h2>{{ event.location }}</h2>
+                            <!-- ng-bind-html allowed strings containing HTML to display with the html formatted -->
+                              <!-- trustAsHtml is an angular function at the bottom of jsController.js -->
+                              <h1><div ng-bind-html="event.eventname.toUpperCase() | trustAsHtml"></div></h1>
+                              <h2><div ng-bind-html="event.location | trustAsHtml"></div></h2>
                               <br />
 
                               <div ng-if="showDetails" >
                             {{ event.description }}
                                   <p ng-bind-html="event.description.html.slice(0,150) | trustAsHtml">...</p>
                               
-
+                                  
 
                                   
                                   <h3>Date: {{ event.start_time_display.slice(0,10)}} </h3>
