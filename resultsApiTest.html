@@ -35,6 +35,7 @@
 
     <body>
 
+        
 
 
 		<!-- Angular JS for Mobile Menu slider -->
@@ -50,15 +51,16 @@
       </div>
 
       <div id="eventsContainer">
-
-
-	     <div id="Darken" style="display: none">
+          
+          
+          <!-- Icon Key Stuffs --> 
+          <div id="Darken" ng-click="iconKeyToggle()" ng-if="showIconKey">
 		<div id="IconContent">
 		    Icon Key
-		    <img src="images/Cross.png" onclick="hideIconKey()">
+		    <img src="images/Cross.png" ng-click="iconKeyToggle()">
 		    <hr>
 		    <ul>
-          <li><img src="images/icons/icon16.png"><span>Age Rating - 16+</span></li>
+          <li ><img src="images/icons/icon16.png"><span>Age Rating - 16+</span></li>
     			<li><img src="images/icons/icon18.png"><span>Age Rating - 18+</span></li>
     			<li><img src="images/icons/iconParents.png"><span>Parental Supervision Required</span></li>
     			<li><img src="images/icons/iconParking.png"><span>Parking Availability</span></li>
@@ -69,11 +71,12 @@
     			<li><img src="images/icons/iconFestival.png"><span>Festival</span></li>
     			<li><img src="images/icons/iconGig.png"><span>Gig</span></li>
     			<li><img src="images/icons/iconNightclub.png"><span>Night Club</span></li>
-    			<li><img src="images/icons/iconSports.png"><span>Sports</span></li>
-
-		    </ul>
+    		    </ul>
 		</div>
 	    </div>
+
+
+	     
 
 
                       <!-- Show this while the API loads -->
@@ -107,30 +110,25 @@ event.venue.longitude
                               <h2>{{ event.location }}</h2>
                               <br />
 
-                              <div ng-show="!showDetails"   >
+                              <div ng-if="showDetails" >
                             {{ event.description }}
                                   <p ng-bind-html="event.description.html.slice(0,150) | trustAsHtml">...</p>
-                              </div>
+                              
 
 
-
-                              <div class="animate-show" ng-if="showDetails"  style="width:100%; height:100%;">
-
-                            <p class="eventDescription" ng-bind-html="event.description.html | trustAsHtml"></p>
-
-                                  <br /><br />
+                                  
                                   <h3>Date: {{ event.start_time_display.slice(0,10)}} </h3>
                                   <h3>Time: {{event.start_time_display.slice(-8)}}</h3>
 
 
                                   <h3>{{ event.priceMessage }}</h3>
-
+                              
                                   <br />
 
-
+                      
                                   <div style="width: 100%; height: 100%">
 
-                                        <ng-map trigger-resize="true" id="map" zoom="15" style="width: 100%; height: 30%" centered="true" center="{{event.venue.full_address}}">
+                                        <ng-map  trigger-resize="true" id="map" zoom="15" style="width: 100%; height: 30%" centered="true" center="{{event.venue.full_address}}">
                                             <marker position="{{event.venue.full_address}}" optimized="false"
     title="{{event.location}}"></marker>
 
@@ -143,12 +141,13 @@ event.venue.longitude
 
                                     </div>
                                         <br />
+                                  </div>
                                   <center>
                                     <img src="images/collapse.png" width="10%" ng-show="showDetails" ng-click="showDetails=!showDetails" />
                                   </center>
 
 
-                            </div>
+                            
                             <center>
                             <br /><br />
                               <img src="images/expand.png" width="10%" ng-show="!showDetails"  ng-click="showDetails=!showDetails"></center>
@@ -158,16 +157,16 @@ event.venue.longitude
 
                           <td class="eventIcons">
                               <center>
-                                <img src="images/icons/icon16.png" ng-if="event.minAge16" ng-click="showIconKey()">
+                                <img src="images/icons/icon16.png" ng-if="event.minAge16" ng-click="showIconKey=!showIconKey">
                                  <img src="images/icons/icon18.png" ng-if="event.minAge18" ng-click="showIconKey()">
                                  <img src="images/icons/iconParents.png" ng-if="event.parents" ng-click="showIconKey()">
                                  <img src="images/icons/iconParking.png" ng-if="event.minAge16" ng-click="showIconKey()">
                                  <img src="images/icons/iconPay.png" ng-if="event.has_tickets" ng-click="showIconKey()">
-                                 <img src="images/icons/iconFree.png" ng-if="!event.hasTickets" ng-click="showIconKey()">
+                                 <img src="images/icons/iconFree.png" ng-if="!event.hasTickets" ng-click="iconKeyToggle()">
                                  <img src="images/icons/iconCeilidh.png" ng-if="event.ceilidh" ng-click="showIconKey()">
                                  <img src="images/icons/iconComedy.png" ng-if="event.comedy" ng-click="showIconKey()">
                                  <img src="images/icons/iconFestival.png" ng-if="event.festival" ng-click="showIconKey()">
-                                 <img src="images/icons/iconGig.png" ng-if="event.gig" ng-click="showIconKey()">
+                                 <img src="images/icons/iconGig.png" ng-if="event.gig" ng-click="showIconKey=!showIconKey">
                                  <img src="images/icons/iconNightclub.png" ng-if="event.nightclub" ng-click="showIconKey()">
                                  <img src="images/icons/iconSports.png" ng-if="event.sports" ng-click="showIconKey()">
 
@@ -328,11 +327,7 @@ event.venue.longitude
             console.log("show");
         }
 
-        function hideIconKey() {
-            var div = document.getElementById('Darken');
-            div.style.display = "none";
-            console.log("hide");
-        }
+    
     </script>
 
     </body>

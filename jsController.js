@@ -13,7 +13,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
     $scope.test = "hey dere";
     $scope.response = "API response!";
 	$scope.eventExpandToggle = true;
-
+    $scope.showIconKey = false;
 
     // API call
     $scope.apiCall = function() {
@@ -36,6 +36,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
             "longitude": -2.091476,
             "radius": 15,
             "category": "entertainment", // keywords be going here
+            "page": 1,
 
             // these are the only search parameters for the API. So, further refining (like dates)
             // will need to be applied to the data returned below.
@@ -59,9 +60,10 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
 
         // loop through the data array and check it's Ticketing status
         for (var i = 0; i < response.data.length; i++) {
-
+        
              var e = response.data[i];
-             e.gig = false;
+            console.log(e.eventname);
+             
              // Ticket Status
              e.priceMessage = "";
              if (e.has_tickets == true) {
@@ -70,19 +72,35 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
              else {
                  e.priceMessage = "This event is free!";
              }
-                    console.log(e.categories[1]);
+                 
              // Category
-             for (var i = 0; i < e.categories.length; i++) {
-
+             for (var j = 0; j < e.categories.length; j++) {
+                 var cat = response.data[i].categories[j];
+                console.log(cat);
                  // check categories and apply extra variables for the Icons to read
-                 if (e.categories[i] === "Music") {
-
-                     e.gig = true;
+                 switch (cat) {
+                    case "Concerts":
+                            break;
+                    case "Music":
+                         e.gig = true;
+                         break;
+                     case "Festivals":
+                         e.festival = true;
+                         break;
+                     case "Comedy" :
+                         e.comedy = true;
+                        default:
+                            break;
                  }
-                 else if (e.categories[i] === "") {
-                   // something
-                 }
+               
              }
+            
+            // finding out if it's a ceilidh - so the only way I can think to do this is search the name for stringvalue
+            // it's a hack but it was written at the hackathon so bllkdjfhgslkfhdg
+            var nameString = e.eventname;
+            if ((e.eventname.toLowerCase()).includes("ceilidh")) {
+                e.ceilidh = true;
+            }
 
         }
 
@@ -124,6 +142,11 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
         $scope.isCollapsed = !$scope.isCollapsed;
 
 	}
+    
+    $scope.iconKeyToggle = function() {
+        console.log("Show key!");
+        $scope.showIconKey = !$scope.showIconKey;
+    }
 
 });
 
