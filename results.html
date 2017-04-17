@@ -145,18 +145,18 @@
 
                           <td class="eventIcons">
                               <center>
-                                <img src="images/icons/icon16.png" ng-if="event.minAge16" ng-click="showIconKey=!showIconKey">
-                                 <img src="images/icons/icon18.png" ng-if="event.minAge18" ng-click="showIconKey()">
-                                 <img src="images/icons/iconParents.png" ng-if="event.parents" ng-click="showIconKey()">
-                                 <img src="images/icons/iconParking.png" ng-if="event.minAge16" ng-click="showIconKey()">
-                                 <img src="images/icons/iconPay.png" ng-if="event.has_tickets" ng-click="showIconKey()">
+                                <img src="images/icons/icon16.png" ng-if="event.minAge16" ng-click="iconKeyToggle()">
+                                 <img src="images/icons/icon18.png" ng-if="event.minAge18" ng-click="iconKeyToggle()">
+                                 <img src="images/icons/iconParents.png" ng-if="event.parents" ng-click="iconKeyToggle()">
+                                 <img src="images/icons/iconParking.png" ng-if="event.minAge16" ng-click="iconKeyToggle()">
+                                 <img src="images/icons/iconPay.png" ng-if="event.has_tickets" ng-click="iconKeyToggle()">
                                  <img src="images/icons/iconFree.png" ng-if="!event.hasTickets" ng-click="iconKeyToggle()">
-                                 <img src="images/icons/iconCeilidh.png" ng-if="event.ceilidh" ng-click="showIconKey()">
-                                 <img src="images/icons/iconComedy.png" ng-if="event.comedy" ng-click="showIconKey()">
-                                 <img src="images/icons/iconFestival.png" ng-if="event.festival" ng-click="showIconKey()">
-                                 <img src="images/icons/iconGig.png" ng-if="event.gig" ng-click="showIconKey=!showIconKey">
-                                 <img src="images/icons/iconNightclub.png" ng-if="event.nightclub" ng-click="showIconKey()">
-                                 <img src="images/icons/iconSports.png" ng-if="event.sports" ng-click="showIconKey()">
+                                 <img src="images/icons/iconCeilidh.png" ng-if="event.ceilidh" ng-click="iconKeyToggle()">
+                                 <img src="images/icons/iconComedy.png" ng-if="event.comedy" ng-click="iconKeyToggle()">
+                                 <img src="images/icons/iconFestival.png" ng-if="event.festival" ng-click="iconKeyToggle()">
+                                 <img src="images/icons/iconGig.png" ng-if="event.gig" ng-click="iconKeyToggle()">
+                                 <img src="images/icons/iconNightclub.png" ng-if="event.nightclub" ng-click="iconKeyToggle()">
+                                 <img src="images/icons/iconSports.png" ng-if="event.sports" ng-click="iconKeyToggle()">
 
                               </center>
                           </td>
