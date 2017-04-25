@@ -14,25 +14,33 @@
 
 	.form_frame {
 
-		padding-top: 5px;
-		width: 100% !important;
-		margin: 0px !important;
+		position: absolute !important;
+		width: 100vw !important;
+		left: 0 !important;
+		right: 0 !important;
+
 		top: 30% !important;
-		border-radius: 5px !important;
+		border-radius: 0px !important;
 
 		}
-		radio-custom, .radio-custom-label, h1 {
+		.radio-custom, .radio-custom-label {
 
-		    	margin: 10px 1px 1px 1px !important;
-					font-size: 2em !important;
+
+					font-size: 1.5em !important;
+					margin: 0.6em !important;
+		}
+
+		h1 {
+			font-size: 1.8em !important;
+			margin: 5px 1px 5px 1px !important;
 
 		}
 		.CustomCombo, .CustomComboOpen {
 
 		    	width: 90% !important;
-		    	height: 45px;
+		    	height: 2em !important;
 			margin-top: 5px !important;
-			margin-bottom: 5px !important;
+			margin-bottom: 10px !important;
 
 
 		}
