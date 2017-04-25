@@ -14,16 +14,29 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
     $scope.response = "API response!";
 	$scope.eventExpandToggle = true;
     $scope.showIconKey = false;
+    $scope.keywords = "";
+    $scope.startDate = "startdate!";
 
     // API call
     $scope.apiCall = function() {
 
+        // get dates from Date Pickery thing
+    
+        $scope.startDate = (datePickerFrom.getDate().toString().slice(0,15));
+        console.log($scope.startDate);
+        
+        // $scope.endDate = (datePickerFrom.getDate()).toString();
+        
+       // $scope.startDate.slice(0,15);
+        
+       // console.log(startDate);
         // empty data to clear the screen
         $scope.response = null;
         // turn on the loading gif
         $scope.loading = true;
         // set API key
         $http.defaults.headers.common["Ocp-Apim-Subscription-Key"] = '7f3028ae78924451854a93a4151e2733';
+        var werds = $scope.keywords;
         // aight here we go this is the good stuff right here
         $http({
 
@@ -35,7 +48,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
             "latitude": 57.146114,
             "longitude": -2.091476,
             "radius": 15,
-            "category": "entertainment", // keywords be going here
+            "category": werds, // keywords be going here
             "page": 1,
 
             // these are the only search parameters for the API. So, further refining (like dates)
@@ -47,7 +60,11 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
           }).success(function(response){
             // hide the loading gif
            $scope.loading = false;
-
+            if (!response.data[0]) {
+                console.log("nothing here boss");
+                // display error image
+            }
+            
 
         // log the data to the console for inspection (right click > inspect > console to view)
         console.log(response);
@@ -60,9 +77,15 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
 
         // loop through the data array and check it's Ticketing status
         for (var i = 0; i < response.data.length; i++) {
+            
         
              var e = response.data[i];
-            console.log(e.eventname);
+            
+            
+            e.descriptionHack = ";)";
+                  
+           
+            //console.log(e.eventname);
              
              // Ticket Status
              e.priceMessage = "";
@@ -76,7 +99,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
              // Category
              for (var j = 0; j < e.categories.length; j++) {
                  var cat = response.data[i].categories[j];
-                console.log(cat);
+                // console.log(cat);
                  // check categories and apply extra variables for the Icons to read
                  switch (cat) {
                     case "Concerts":
@@ -144,11 +167,12 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
 	}
     
     $scope.iconKeyToggle = function() {
-        console.log("Show key!");
+        
         $scope.showIconKey = !$scope.showIconKey;
     }
 
 });
+
 
 
 // ****** tiiiiiiiiny buggies, in the code, make me happy, make me feel fine *******
