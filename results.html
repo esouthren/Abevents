@@ -80,7 +80,7 @@
 
 
                       <!-- Show this while the API loads -->
-                      <div ng-show="loading" style="margin-top: 10em; text-align:center"><h1>I load, therefore I am</h1><img id="Loading-Gif" src="/JohnsClass/images/Loading.gif" alt="loading gif"/></div>
+                      <div ng-show="loading" style="margin-top: 10em; text-align:center"><h1>I load, therefore I am</h1><h3>plz make me into a pretty gif</h3></div>
 
 
                 <div ng-repeat="event in response" >
@@ -111,7 +111,8 @@
 
                                   <br />
 
-
+                                  {{ event.eventText }}
+                                  {{ pleaseWork }}
 
                                   <div style="width: 100%; height: 100%">
 
@@ -137,7 +138,8 @@
 
                             <center>
                             <br /><br />
-                              <img src="images/expand.png" width="7%" ng-show="!showDetails"  ng-click="showDetails=!showDetails"></center>
+                              <img src="images/expand.png" width="7%" ng-show="!showDetails"  ng-click="showDetails=!showDetails;expandEvent(event)"></center>
+
 
 
                         </td>
@@ -273,6 +275,8 @@
                 divObj.style.opacity = 0.5;
             }
         }
+
+
 
         // highlights either calendar when clicking the date picker
         function dateSelectMethod() {

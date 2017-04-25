@@ -21,14 +21,14 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
     $scope.apiCall = function() {
 
         // get dates from Date Pickery thing
-    
+
         $scope.startDate = (datePickerFrom.getDate().toString().slice(0,15));
         console.log($scope.startDate);
-        
+
         // $scope.endDate = (datePickerFrom.getDate()).toString();
-        
+
        // $scope.startDate.slice(0,15);
-        
+
        // console.log(startDate);
         // empty data to clear the screen
         $scope.response = null;
@@ -64,7 +64,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
                 console.log("nothing here boss");
                 // display error image
             }
-            
+
 
         // log the data to the console for inspection (right click > inspect > console to view)
         console.log(response);
@@ -77,16 +77,10 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
 
         // loop through the data array and check it's Ticketing status
         for (var i = 0; i < response.data.length; i++) {
-            
-        
-             var e = response.data[i];
-            
-            
-            e.descriptionHack = ";)";
-                  
-           
+            var e = response.data[i];
+
             //console.log(e.eventname);
-             
+            e.eventText = "I'm eventText!";
              // Ticket Status
              e.priceMessage = "";
              if (e.has_tickets == true) {
@@ -95,7 +89,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
              else {
                  e.priceMessage = "This event is free!";
              }
-                 
+
              // Category
              for (var j = 0; j < e.categories.length; j++) {
                  var cat = response.data[i].categories[j];
@@ -115,9 +109,9 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
                         default:
                             break;
                  }
-               
+
              }
-            
+
             // finding out if it's a ceilidh - so the only way I can think to do this is search the name for stringvalue
             // it's a hack but it was written at the hackathon so bllkdjfhgslkfhdg
             var nameString = e.eventname;
@@ -158,17 +152,24 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
 		$scope.mobileMenuToggle = ($scope.mobileMenuToggle) ? false : true;
 	}
 
-    // expand the event to display more descriptive text
-	$scope.expandEvent = function() {
+    // expand the event to display more descriptive text with a cheeky scraper
+	$scope.expandEvent = function(event) {
 
-		$scope.eventExpandToggle = !$scope.eventExpandToggle;
-        $scope.isCollapsed = !$scope.isCollapsed;
+    var thisUrl = "http://anyorigin.com/go?url=" + event.event_url + "&callback=?";
+    console.log(thisUrl);
+    $http.jsonp(thisUrl).success(function(response) {
+                event.eventText = response.data;
+                $scope.pleaseWork = response.data;
+                console.log(response);
 
+                });
+                console.log(event.eventText);
 	}
-    
+
     $scope.iconKeyToggle = function() {
-        
+
         $scope.showIconKey = !$scope.showIconKey;
+
     }
 
 });
