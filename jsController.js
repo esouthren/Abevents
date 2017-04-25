@@ -155,7 +155,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
     // expand the event to display more descriptive text with a cheeky scraper
 	$scope.expandEvent = function(event) {
 
-    var thisUrl = "http://anyorigin.com/go?url=" + event.event_url + "&callback=?";
+    var thisUrl = "https://anyorigin.com/go?url=" + event.event_url + "&callback=?";
     console.log(thisUrl);
     $http.jsonp(thisUrl).success(function(response) {
                 event.eventText = response.data;
