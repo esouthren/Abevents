@@ -34,6 +34,8 @@
     </head>
 
     <body>
+        
+       
 
 
 
@@ -99,8 +101,9 @@
                               <br />
 
                               <div ng-if="showDetails" >
+                             
 
-
+                                <div class="scrapedDesc"></div>
 
                              {{ event.eventDescription }}
                                   <h3>Date: {{ event.start_time_display.slice(0,10)}} </h3>
@@ -112,20 +115,20 @@
                                   <br />
 
                                   {{ event.eventText }}
-                                  {{ pleaseWork }}
+                                
 
                                   <div style="width: 100%; height: 100%">
 
                                         <ng-map  trigger-resize="true" id="map" zoom="15" style="width: 100%; height: 30%" centered="true" center="{{event.venue.full_address}}">
                                             <marker position="{{event.venue.full_address}}" optimized="false"
-    title="{{event.location}}"></marker>
+    title="{{event.location}}"></marker> 
 
     <!-- icon="{   // insert this into <marker position>, can't get it to resize whilst centering on the address
         url:'images/logo.png',
         scaledSize:[100,100],
         origin: [10,10],
         anchor: [50,50]
-}" -->                              </ng-map>
+}" -->                              </ng-map> 
 
                                     </div>
                                         <br />
@@ -138,7 +141,7 @@
 
                             <center>
                             <br /><br />
-                              <img src="images/expand.png" width="7%" ng-show="!showDetails"  ng-click="showDetails=!showDetails;expandEvent(event)"></center>
+                              <img src="images/expand.png" width="7%" ng-show="!showDetails" ng-click="scrapeDesc(event.event_url);showDetails=!showDetails" ></center>
 
 
 
@@ -248,8 +251,7 @@
 
 		<!-- Javascripty Bits and Pieces -->
 
-
-<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJWi5rTDvlN7a5gAZec4509sgQO8Y1ZcY&callback=myMap"></script> -->
+  
 
 
     <script src="pikaday.js"> // Pikadaty is the Calendar Widget</script>

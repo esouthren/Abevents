@@ -153,29 +153,50 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
 	}
 
     // expand the event to display more descriptive text with a cheeky scraper
-	$scope.expandEvent = function(event) {
-
-    var thisUrl = "https://anyorigin.com/go?url=" + event.event_url + "&callback=?";
-    console.log(thisUrl);
-    $http.jsonp(thisUrl).success(function(response) {
+	$scope.scrapeDesc = function(thisUrl) {
+        console.log("scrapedesc fired!");
+        console.log(thisUrl);
+         var sendUrl = "https://anyorigin.com/go?url=" + thisUrl + "&callback=?";
+   $http.jsonp(sendUrl).success(function(response) {
                 event.eventText = response.data;
-                $scope.pleaseWork = response.data;
+                
                 console.log(response);
 
                 });
+    }
+/*
+   
+    
                 console.log(event.eventText);
 	}
 
     $scope.iconKeyToggle = function() {
 
         $scope.showIconKey = !$scope.showIconKey;
-
-    }
+*/
+    
 
 });
-
-
-
+/*
+    <script>
+          
+          function scrapeDesc(thisUrl) {
+              console.log("Fired");
+              var urlToSend = 'https://anyorigin.com/go?url=' + thisUrl + '&callback=?';
+              console.log(urlToSend);
+                 $.getJSON('https://anyorigin.com/go?url=https%3A//allevents.in/aberdeen/undermined-aberdeen/198240407333504&callback=?', function(data){
+                    var stringy = data.contents;
+                    var start = stringy.indexOf('<div property="schema');
+                    var end = stringy.indexOf('</span><br/><br/>');
+                    var desc = stringy.slice(start, end);                        
+                console.log(desc);
+            
+	$('#scrapedDesc').html(desc);
+          //  console.log(data.contents);
+                                    });
+          }
+        </script>
+*/
 // ****** tiiiiiiiiny buggies, in the code, make me happy, make me feel fine *******
 
 // function for formatting the event description text properly (as the returned string contains HTML)
