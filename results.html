@@ -56,8 +56,8 @@
           <!-- Icon Key Stuffs --> 
           <div id="Darken" ng-click="iconKeyToggle()" ng-if="showIconKey">
 		<div id="IconContent">
-		    Icon Key
-		    <img src="images/Cross.png" ng-click="iconKeyToggle()">
+		    
+		    <img src="images/Cross.png" ng-click="iconKeyToggle()"><br />
 		    <hr>
 		    <ul>
           <li ><img src="images/icons/icon16.png"><span>Age Rating - 16+</span></li>
@@ -288,6 +288,7 @@
             yearRange: [2000,2020]
         });
         
+        
 
         var datePickerTo = new Pikaday(
         {
@@ -297,8 +298,7 @@
             maxDate: new Date(2020, 12, 31),
             yearRange: [2000,2020]
         });
-        var startDate = datePickerTo.getDate();
-        console.log(startDate);
+        
 
         // to remove scroll bar from main events window
         var parent = document.getElementById('container1');
@@ -315,7 +315,7 @@
         function showIconKey() {
             var div = document.getElementById('Darken');
             div.style.display = "block";
-            console.log("show");
+            
         }
 
     
