@@ -470,6 +470,6 @@ hr {
     margin-left: 20px;
 }
 
-#IconContent ul .Genre span {
-    color: #7d1b63;
+#IconContent ul .Genre {
+    color: #7d1b63 !important;
 }
