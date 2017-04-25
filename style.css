@@ -473,3 +473,8 @@ hr {
 #IconContent ul .Genre {
     color: #7d1b63 !important;
 }
+
+#Loading-Gif {
+    height: 50%;
+    width: auto;
+}
