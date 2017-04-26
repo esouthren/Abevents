@@ -6,28 +6,47 @@
 var abEvents = angular.module("abEvents", ['ngMap', 'ngAnimate']);
 
 //define controller for application
-abEvents.controller("abEventsController", function($scope, $http, $timeout) {
+abEvents.controller("abEventsController", function($scope, $http, $timeout, $window) {
 
-    // variables to declare at the start
-    $scope.priceMessage = "Wubba Lubba";
+
     $scope.test = "hey dere";
     $scope.response = "API response!";
-	$scope.eventExpandToggle = true;
+	  $scope.eventExpandToggle = true;
     $scope.showIconKey = false;
+
+    // MENU variables
+    // variables to declare at the start
+    $scope.priceMessage = "Wubba Lubba";
     $scope.keywords = "";
-    $scope.startDate = "startdate!";
+    $scope.startDate = new Date();
+    $scope.endDate = new Date();
+    $scope.timeToday = true;
+    $scope.timeTomorrow = true;
+    $scope.timeWeekend = true;
+    $scope.timeWeeknights = true;
+    $scope.catNightclubs = true;
+    $scope.catGigs = true;
+    $scope.catComedy = true;
+    $scope.catTheatre = true;
+    $scope.catFestivals = true;
+    $scope.catCeilidh = true;
 
     // API call
     $scope.apiCall = function() {
 
         // get dates from Date Pickery thing
 
-        $scope.startDate = (datePickerFrom.getDate().toString().slice(0,15));
-        console.log($scope.startDate);
+        $scope.startDate = (datePickerFrom.getDate());
+        $scope.startDate.setHours(0,0,0,0);
+        $scope.endDate = (datePickerTo.getDate());
+        $scope.endDate.setHours(0,0,0,0);
 
-        // $scope.endDate = (datePickerFrom.getDate()).toString();
 
-       // $scope.startDate.slice(0,15);
+      // making sure the end date is after the start date
+      if ($scope.startDate > $scope.endDate) {
+        $window.alert("Error: End date must come after start date!");
+        return;
+      }
 
        // console.log(startDate);
         // empty data to clear the screen
@@ -37,37 +56,36 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
         // set API key
         $http.defaults.headers.common["Ocp-Apim-Subscription-Key"] = '7f3028ae78924451854a93a4151e2733';
         var werds = $scope.keywords;
-        // aight here we go this is the good stuff right here
+
+        // aight here we go! Starting API Call
         $http({
 
             url: 'https://api.allevents.in/events/geo/',
 
-        params: {
+            params: {
 
-            // this is where the user input is submitted
-            "latitude": 57.146114,
-            "longitude": -2.091476,
-            "radius": 15,
-            "category": werds, // keywords be going here
-            "page": 1,
+              // this is where the user input is submitted
+              "latitude": 57.146114,
+              "longitude": -2.091476,
+              "radius": 15,
+              "category": werds, // keywords be going here
+              "page": 1,
 
             // these are the only search parameters for the API. So, further refining (like dates)
             // will need to be applied to the data returned below.
-        },
-        method: "POST",
-
-            // if successful API call:
-          }).success(function(response){
-            // hide the loading gif
-           $scope.loading = false;
-            if (!response.data[0]) {
-                console.log("nothing here boss");
-                // display error image
-            }
-
+          },
+          method: "POST",
+              // if successful API call:
+            }).success(function(response){
+              // hide the loading gif
+             $scope.loading = false;
+              if (!response.data[0]) {
+                  console.log("nothing here boss");
+                  // display error image
+              }
 
         // log the data to the console for inspection (right click > inspect > console to view)
-        console.log(response);
+      //  console.log(response);
         console.log(response.data[1]);
 
         // let's format our data to make it more friendly looking
@@ -76,7 +94,9 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
         // changing the message accordingly)
 
         // loop through the data array and check it's Ticketing status
-        for (var i = 0; i < response.data.length; i++) {
+
+        // we're looping in reverse so that if we remove elements the interation continues
+        for (var i = ((response.data.length)-1); i >=0; --i) {
             var e = response.data[i];
 
             //console.log(e.eventname);
@@ -93,7 +113,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
              // Category
              for (var j = 0; j < e.categories.length; j++) {
                  var cat = response.data[i].categories[j];
-                // console.log(cat);
+
                  // check categories and apply extra variables for the Icons to read
                  switch (cat) {
                     case "Concerts":
@@ -119,11 +139,99 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
                 e.ceilidh = true;
             }
 
-        }
+              // Editing the Output for user's selected criteria
+              // Categories
 
-        // NOTE ********* more things we need to do to the data:
-            // get the icons displaying - I'm thinking have them all there in the HTML but displaying based on a boolean
-            // value we set here? Like if tickets.has_tickets == false.
+          if (!$scope.catCeilidh) {
+            if (e.ceilidh) {
+              response.data.splice(i, 1); // remove event from array
+            }
+          }
+          if (!$scope.catGigs) {
+            if (e.categories.includes("Concerts")) {
+                response.data.splice(i, 1);
+            }
+          }
+          if (!$scope.catTheatre) {
+            if (e.categories.includes("Theatre")) {
+                response.data.splice(i, 1);
+            }
+          }
+          if (!$scope.catFestivals) {
+            if (e.categories.includes("Festivals")) {
+              response.data.splice(i, 1);
+            }
+         }
+
+         var todayDate = new Date();
+         todayDate.setHours(0,0,0,0); // set the time to 0 so when we compare dates, it's only dd/mm/yyyy
+
+         var tomorrowDate = new Date(todayDate.getTime() + (24 * 60 * 60 * 1000));
+
+         // let's parse the API date into a friendly format
+         var dayText = e.start_time_display.slice(0,3);
+         var month = e.start_time_display.slice(4,7);
+         var day = e.start_time_display.slice(8,10);
+         var year = e.start_time_display.slice(11,15);
+
+         switch (month) {
+           case "Jan" : month = "00"; break;
+           case "Feb" : month = "01"; break;
+           case "Mar" : month = "02"; break;
+           case "Apr" : month = "03"; break;
+           case "May" : month = "04"; break;
+           case "Jun" : month = "05"; break;
+           case "Jul" : month = "06"; break;
+           case "Aug" : month = "07"; break;
+           case "Sep" : month = "08"; break;
+           case "Oct" : month = "09"; break;
+           case "Nov" : month = "10"; break;
+           case "Dec" : month = "11"; break;
+            default: break;
+         }
+         // finally assesmble into a date object we can use
+         var eventDate = new Date(year, month, day);
+
+         // if the user doesn't want Today's events
+            if (!$scope.timeToday) {
+              if(eventDate.getTime() == todayDate.getTime()) {
+                response.data.splice(i,1);
+              }
+            }
+          // .... or tomorrows
+          if (!$scope.timeTomorrow) {
+            if(eventDate.getTime() == tomorrowDate.getTime()) {
+              response.data.splice(i,1);
+            }
+          }
+          // ... or weekend events
+          if (!$scope.timeWeekend) {
+            if(dayText == "Sat" || dayText == "Sun") {
+              response.data.splice(i,1);
+            }
+          }
+          // ... or weeknight events
+          if (!$scope.timeWeeknights) {
+            if(dayText != "Sat" && dayText != "Sun") {
+              response.data.splice(i,1);
+            }
+          }
+
+          // if either of the date selectors have been used
+          if ($scope.startDate.getTime() != todayDate.getTime() || $scope.endDate.getTime() != todayDate.getTime()) {
+
+           if(eventDate <= $scope.startDate) {
+             response.data.splice(i, 1); // remove from returned results
+           }
+           if(eventDate >= $scope.endDate) {
+             response.data.splice(i, 1);
+           }
+
+         }
+
+       } // end of response interation
+
+
 
         // finally, bind the data to the $scope.response variable to be used in the View bit (the HTML).
         $scope.response = response.data;
@@ -134,7 +242,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
         if (window.innerWidth < 750) {
 	       $scope.mobileMenuToggle = true;
         }
-    }
+    }  // END OF API CALL
 
     // toggles visibility of menu on mobile devices
     $scope.mobileMenuToggle = false;
@@ -142,7 +250,10 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
 	       $scope.mobileMenuToggle = true;
         }
 
-
+        // this toggles the category and time buttons on or off
+        $scope.catToggle = function(theCat) {
+          $scope[theCat] = !$scope[theCat];
+        }
 
     // what
 	$scope.test = "What";
@@ -152,27 +263,9 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout) {
 		$scope.mobileMenuToggle = ($scope.mobileMenuToggle) ? false : true;
 	}
 
-    // expand the event to display more descriptive text with a cheeky scraper
-/*	$scope.expandEvent = function(event) {
-
-
-    var thisUrl = 'https://anyorigin.com/go?url=' + event.event_url + '&callback=?';
-    console.log("the url being sent");
-    console.log(thisUrl);
-    $http.jsonp(thisUrl).success(function(response) {
-                event.eventText = response.data;
-                $scope.pleaseWork = response.data;
-                console.log(response);
-
-                });
-                console.log(event.eventText);
-	}
-  */
 
     $scope.iconKeyToggle = function() {
-
         $scope.showIconKey = !$scope.showIconKey;
-
     }
 
 });
