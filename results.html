@@ -101,8 +101,6 @@
                               <div ng-if="showDetails" >
 
 
-
-                             {{ event.eventDescription }}
                                   <h3>Date: {{ event.start_time_display.slice(0,10)}} </h3>
                                   <h3>Time: {{event.start_time_display.slice(-8)}}</h3>
 
@@ -111,7 +109,9 @@
 
                                   <br />
 
-                                  <div class="scrapedDescription"></div>
+                                  <h3>Categories:</h3>
+                                    <div ng-repeat="cat in event.categories">
+                                    <h4>  {{ cat }} </h4></div> <br />
 
                                   <div style="width: 100%; height: 100%">
 
@@ -137,7 +137,7 @@
 
                             <center>
                             <br /><br />
-                              <img src="images/expand.png" width="7%" ng-show="!showDetails" onclick="scrapeScrape({{event.event_url}})" ng-click="showDetails=!showDetails;expandEvent(event)"></center>
+                              <img src="images/expand.png" width="7%" ng-show="!showDetails" ng-click="showDetails=!showDetails"></center>
 
 
 
@@ -187,10 +187,10 @@
           <br /><br />
           <label for="datepicker"><h3>Date &nbsp;&nbsp;</h3> </label>
           <h5>
-              <button id="catButton" onclick="categoryToggle(this)">Today</button>
-              <button id="catButton" onclick="categoryToggle(this)">Tomorrow</button>
-              <button id="catButton" onclick="categoryToggle(this)">Weekend</button>
-              <button id="catButton" onclick="categoryToggle(this)">Weeknights</button>
+              <button id="catButton" ng-click="catToggle('timeToday')" onclick="categoryToggle(this)">Today</button>
+              <button id="catButton" ng-click="catToggle('timeTomorrow')" onclick="categoryToggle(this)">Tomorrow</button>
+              <button id="catButton" ng-click="catToggle('timeWeekend')"onclick="categoryToggle(this)">Weekend</button>
+              <button id="catButton" ng-click="catToggle('timeWeeknights')" onclick="categoryToggle(this)">Weeknights</button>
           </h5>
 
           <p style="line-height:0.5">or<p />
@@ -213,12 +213,12 @@
           <br />
           <h3> Categories</h3>
           <h5>
-              <button id="catButton" onclick="categoryToggle(this)">Nightclubs</button>
-              <button id="catButton" onclick="categoryToggle(this)">Gigs</button>
-              <button id="catButton" onclick="categoryToggle(this)">Comedy</button>
-              <button id="catButton" onclick="categoryToggle(this)">Theatre</button>
-              <button id="catButton" onclick="categoryToggle(this)">Festivals</button>
-              <button id="catButton" onclick="categoryToggle(this)">Ceilidh</button>
+              <button id="catButton" ng-click="catToggle('catNightclubs')" onclick="categoryToggle(this)">Nightclubs</button>
+              <button id="catButton" ng-click="catToggle('catGigs')" onclick="categoryToggle(this)">Gigs</button>
+              <button id="catButton" ng-click="catToggle('catComedy')" onclick="categoryToggle(this)">Comedy</button>
+              <button id="catButton" ng-click="catToggle('catTheatre')" onclick="categoryToggle(this)">Theatre</button>
+              <button id="catButton"  ng-click="catToggle('catFestivals')" onclick="categoryToggle(this)">Festivals</button>
+              <button id="catButton" ng-click="catToggle('catCeilidh')" onclick="categoryToggle(this)">Ceilidh</button>
           </h5>
 
           <h3>Max Price</h3><br />
@@ -267,6 +267,7 @@
             calendarPick = true;
 
             if (divObj.style.backgroundColor == "purple") {
+
                 divObj.style.backgroundColor = "#e70b3a";
                 divObj.style.opacity = 1;
             } else {
@@ -275,22 +276,11 @@
             }
         }
 
-        function scrapeScrape(thisURL) {
-          console.log("I've been called! Calling api...");
-          $.getJSON('http://anyorigin.com/go?url=' + thisUrl + '&callback=?', function(data){
-	$('#scrapedDescription').html(data.contents);
-  console.log("scrapey scrape");
-  console.log(data.contents);
-  console.log(data);
-});
-      }
 
 
 
         // highlights either calendar when clicking the date picker
-        function dateSelectMethod() {
 
-        }
 
         var datePickerFrom = new Pikaday(
         {
