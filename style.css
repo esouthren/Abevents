@@ -470,11 +470,6 @@ hr {
     margin-left: 20px;
 }
 
-#IconContent ul .Genre span {
+#IconContent ul .Genre {
     color: #7d1b63 !important;
-}
-
-#Loading-Gif {
-    height: 10vh;
-    width: auto;
 }
