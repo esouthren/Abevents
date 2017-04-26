@@ -26,7 +26,7 @@
 }
 
 .search_box:hover {
-	width: 275px;
+	width: 300px;
 	opacity: 0.82;
 	color: rgba(181, 181, 181, 1);
 	background: rgba(0, 0, 0, 0.4);
@@ -34,7 +34,7 @@
 }
 
 .search_box:focus {
-	width: 320px;
+	width: 400px;
 	cursor: default;
 	padding: -13px 20px 0;
 	color: rgba(255, 255, 255, 1);
@@ -264,11 +264,11 @@ input[type='radio'] {
 	}
 	
 	.search_box:hover {
-		width: 275px;
+		width: 250px;
 	}
 	
 	.search_box:focus {
-		width: 325px;
+		width: 275px;
 	}
 	
 	.searchButton {
