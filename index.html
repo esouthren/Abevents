@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="mainstyle.css"/>
 
 
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	    <script src="https://code.angularjs.org/1.3.15/angular.js"></script>
 	        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
@@ -92,23 +92,15 @@
 				
 				var bg = images[Math.floor(Math.random() * images.length)];
 				
-				console.log(bg);
-				
-				document.body.background = bg;
-				
 				$('body').css('background', bg);
-
 			$(document).ready(function () {
-
 				$(".body").click(function(){
 					closeAll();
 				});
-
 				$(".CustomCombo").click(function(event){
 					event.stopPropagation();
 				});
 			});
-
             		function toggleOpen(box) {
                			console.log("Toggle");
                			if(box.parentElement.className === "CustomCombo") {
@@ -117,22 +109,17 @@
                     			box.parentElement.className = "CustomCombo";
                 		}
             		}
-
 			function closeAll() {
 				boxes = document.getElementsByClassName("CustomComboOpen");
 				for(var i = 0; i < boxes.length; i ++) {
 					boxes[i].className = "CustomCombo";
 				}
 			}
-
             		function selectOption(option) {
                 		console.log("Select");
                			option.parentElement.parentElement.firstElementChild.innerHTML = option.innerHTML;
                 		toggleOpen(option.parentElement);
            		}
-
         </script>
-
 </body>
-
 </html>
