@@ -16,7 +16,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
 
     // Index Search variables
     $scope.indexRadioTime = "indexToday";
-    $scope.keywordsQuery = "Enter Keywords..."
+    $scope.keywordsQuery = "";
 
     // MENU variables
     // variables to declare at the start
@@ -34,6 +34,8 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
     $scope.catTheatre = true;
     $scope.catFestivals = true;
     $scope.catCeilidh = true;
+                    
+             
 
     // API call
     $scope.apiCall = function() {
@@ -59,7 +61,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
         $scope.loading = true;
         // set API key
         $http.defaults.headers.common["Ocp-Apim-Subscription-Key"] = '7f3028ae78924451854a93a4151e2733';
-        var werds = $scope.keywords;
+ 
 
         // aight here we go! Starting API Call
         $http({
@@ -72,7 +74,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
               "latitude": 57.146114,
               "longitude": -2.091476,
               "radius": 15,
-              "category": werds, // keywords be going here
+              "category": "", // keywords be going here
               "page": 1,
 
             // these are the only search parameters for the API. So, further refining (like dates)
@@ -107,7 +109,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
             e.eventText = "I'm eventText!";
              // Ticket Status
              e.priceMessage = "";
-             if (e.has_tickets == true) {
+             if (e.hasTickets == true) {
                  e.priceMessage = "Get tickets at: " + e.tickets.ticket_url;
              }
              else {
@@ -121,7 +123,17 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
                  // check categories and apply extra variables for the Icons to read
                  switch (cat) {
                     case "Concerts":
+                       e.gig = true;
                             break;
+                       case "Parties":
+                       e.nightclub = true;
+                       break;
+                    case "Sports":
+                       e.sports = true;
+                       break;
+                       case "trips-adventures":
+                       e.sports = true;
+                       break;
                     case "Music":
                          e.gig = true;
                          break;
@@ -142,6 +154,21 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
             if ((e.eventname.toLowerCase()).includes("ceilidh")) {
                 e.ceilidh = true;
             }
+                       
+            // workaround: certain venues only have ticketed events // this is a mess and could be cleaned up with an array of club strings
+                       var title = e.location.toLowerCase();
+                       if (title == "krakatoa" || title.includes("band") || title.includes("lemon tree") || title.includes("drummonds")) {
+                           e.hasTickets = true;
+                            e.minAge18 = true;
+                        e.minAge18 = true;
+                           }
+                   
+                       if (title.includes("tunnels") || title.includes("51") || title.includes("cotton") || title.includes("revolucion") || title.includes("institute") || title.includes("underground")) {
+                       e.hasTickets = true;
+                       e.nightclub = true;
+                       e.minAge18 = true;
+                       }
+                     
 
               // Editing the Output for user's selected criteria
               // Categories
@@ -232,6 +259,47 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
            }
 
          }
+                       
+        // filtering by keywords
+                       
+        if ($scope.keywordsQuery != "") {
+                       
+            var keywords = $scope.keywordsQuery.toLowerCase().split(" ");
+                       
+            var remove = true;
+            for (var x = 0; x < keywords.length; x++) {
+                if (e.eventname.toLowerCase().includes(keywords[x])) {
+                    remove = false;
+                }
+                if (e.location.toLowerCase().includes(keywords[x])) {
+                    remove = false;
+                }
+                       for (var c = 0; c < e.categories.length; c++) {
+                       if (e.categories[c].toLowerCase() == keywords[x]) {
+                       remove = false;
+                       }
+                       }
+                       for (var c = 0; c < e.tags.length; c++) {
+                       if (e.tags[c].toLowerCase() == keywords[x]) {
+                       remove = false;
+                       }
+                       }
+                       
+            }
+            if (remove) {
+                response.data.splice(i,1);
+            }
+        }
+                       
+              e.categoriesDisplay = "";         // making a nice category display list
+        if (e.categories.length > 0) {
+                e.categoriesDisplay = "Categories: ";
+                for (var cc = 0; cc < e.categories.length; cc++) {
+                       e.categoriesDisplay += e.categories[cc] + ", ";
+                       }
+                       e.categoriesDisplay = e.categoriesDisplay.substring(0,e.categoriesDisplay.length-2);
+                    }
+                       
 
        } // end of response interation
 
@@ -241,6 +309,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
         $scope.response = response.data;
         console.log("Number of events:");
         console.log($scope.response.length);
+                       console.log($scope.response);
 
       });
 
@@ -250,8 +319,11 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
         }
     }  // END OF API CALL
 
-
-
+                    // reload page (when user wants to clear search parameters)
+                    $scope.reload = function()
+                    {
+                    location.reload(); 
+                    }
 
     // toggles visibility of menu on mobile devices
     $scope.mobileMenuToggle = false;
