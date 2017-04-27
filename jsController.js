@@ -16,7 +16,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
 
     // Index Search variables
     $scope.indexRadioTime = "indexToday";
-    $scope.keywordsQuery = "";
+    $scope.keywordsQuery = "Enter Keywords..."
 
     // MENU variables
     // variables to declare at the start
@@ -34,8 +34,6 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
     $scope.catTheatre = true;
     $scope.catFestivals = true;
     $scope.catCeilidh = true;
-                    
-             
 
     // API call
     $scope.apiCall = function() {
@@ -61,7 +59,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
         $scope.loading = true;
         // set API key
         $http.defaults.headers.common["Ocp-Apim-Subscription-Key"] = '7f3028ae78924451854a93a4151e2733';
- 
+        var werds = $scope.keywords;
 
         // aight here we go! Starting API Call
         $http({
@@ -74,7 +72,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
               "latitude": 57.146114,
               "longitude": -2.091476,
               "radius": 15,
-              "category": "", // keywords be going here
+              "category": werds, // keywords be going here
               "page": 1,
 
             // these are the only search parameters for the API. So, further refining (like dates)
@@ -124,12 +122,6 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
                  switch (cat) {
                     case "Concerts":
                             break;
-                    case "Sports":
-                       e.sports = true;
-                       break;
-                       case "trips-adventures":
-                       e.sports = true;
-                       break;
                     case "Music":
                          e.gig = true;
                          break;
@@ -240,31 +232,6 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
            }
 
          }
-                       
-        // filtering by keywords
-                       
-        if ($scope.keywordsQuery != "") {
-            var keywords = $scope.keywordsQuery.toLowerCase().split(" ");
-            var remove = true;
-            for (var x = 0; x < keywords.length; x++) {
-                if (e.eventname.toLowerCase().includes(keywords[x])) {
-                    remove = false;
-                }
-                if (e.location.toLowerCase().includes(keywords[x])) {
-                    remove = false;
-                }
-                       for (var c = 0; c < e.categories.length; c++) {
-                       if (e.categories[c] == keywords[x]) {
-                       remove = false;
-                       }
-                       }
-                
-                       
-            }
-            if (remove) {
-                response.data.splice(i,1);
-            }
-        }
 
        } // end of response interation
 
