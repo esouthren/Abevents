@@ -14,10 +14,14 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
 	  $scope.eventExpandToggle = true;
     $scope.showIconKey = false;
 
+    // Index Search variables
+    $scope.indexRadioTime = "indexToday";
+    $scope.keywordsQuery = "";
+
     // MENU variables
     // variables to declare at the start
     $scope.priceMessage = "Wubba Lubba";
-    $scope.keywords = "";
+
     $scope.startDate = new Date();
     $scope.endDate = new Date();
     $scope.timeToday = true;
@@ -30,6 +34,8 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
     $scope.catTheatre = true;
     $scope.catFestivals = true;
     $scope.catCeilidh = true;
+                    
+             
 
     // API call
     $scope.apiCall = function() {
@@ -55,7 +61,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
         $scope.loading = true;
         // set API key
         $http.defaults.headers.common["Ocp-Apim-Subscription-Key"] = '7f3028ae78924451854a93a4151e2733';
-        var werds = $scope.keywords;
+ 
 
         // aight here we go! Starting API Call
         $http({
@@ -68,7 +74,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
               "latitude": 57.146114,
               "longitude": -2.091476,
               "radius": 15,
-              "category": werds, // keywords be going here
+              "category": "", // keywords be going here
               "page": 1,
 
             // these are the only search parameters for the API. So, further refining (like dates)
@@ -118,6 +124,12 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
                  switch (cat) {
                     case "Concerts":
                             break;
+                    case "Sports":
+                       e.sports = true;
+                       break;
+                       case "trips-adventures":
+                       e.sports = true;
+                       break;
                     case "Music":
                          e.gig = true;
                          break;
@@ -228,6 +240,31 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
            }
 
          }
+                       
+        // filtering by keywords
+                       
+        if ($scope.keywordsQuery != "") {
+            var keywords = $scope.keywordsQuery.toLowerCase().split(" ");
+            var remove = true;
+            for (var x = 0; x < keywords.length; x++) {
+                if (e.eventname.toLowerCase().includes(keywords[x])) {
+                    remove = false;
+                }
+                if (e.location.toLowerCase().includes(keywords[x])) {
+                    remove = false;
+                }
+                       for (var c = 0; c < e.categories.length; c++) {
+                       if (e.categories[c] == keywords[x]) {
+                       remove = false;
+                       }
+                       }
+                
+                       
+            }
+            if (remove) {
+                response.data.splice(i,1);
+            }
+        }
 
        } // end of response interation
 
@@ -235,6 +272,8 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
 
         // finally, bind the data to the $scope.response variable to be used in the View bit (the HTML).
         $scope.response = response.data;
+        console.log("Number of events:");
+        console.log($scope.response.length);
 
       });
 
@@ -243,6 +282,9 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
 	       $scope.mobileMenuToggle = true;
         }
     }  // END OF API CALL
+
+
+
 
     // toggles visibility of menu on mobile devices
     $scope.mobileMenuToggle = false;
@@ -253,10 +295,36 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
         // this toggles the category and time buttons on or off
         $scope.catToggle = function(theCat) {
           $scope[theCat] = !$scope[theCat];
+          console.log($scope[theCat]);
         }
 
     // what
 	$scope.test = "What";
+
+  // function called when the index.html radio buttons are changed
+  $scope.indexTime = function() {
+
+      console.log("clicky!");
+      console.log($scope.indexRadioTime);
+
+      if ($scope.indexRadioTime == "indexToday"){
+        $scope.timeToday = true;
+        $scope.timeTomorrow = false; $scope.timeWeekend = false; $scope.timeWeeknights = false;
+      }
+      if ($scope.indexRadioTime == "indexTomorrow") {
+        $scope.timeTomorrow = true;
+        $scope.timeToday = false; $scope.timeWeekend = false; $scope.timeWeeknights = false;
+      }
+      if ($scope.indexRadioTime == "indexWeekend") {
+        $scope.timeWeekend = true;
+        $scope.timeToday = false; $scope.timeTomorrow = false; $scope.timeWeeknights = false;
+      }
+      if ($scope.indexRadioTime == "indexWeeknights") {
+        $scope.timeWeeknights = true;
+        $scope.timeToday = false; $scope.timeTomorrow = false; $scope.timeWeekend = false;
+      }
+    }
+
 
     // function called when Menu button is pressed on mobile - expands/minimises the menu
 	$scope.toggleMenu = function() {
