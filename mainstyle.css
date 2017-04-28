@@ -63,6 +63,7 @@
 }
 
 .logo {
+	content:url("images/main_logo_b.png");
 	max-width: 422px;
 	max-height: 500px;
 	height: auto;
