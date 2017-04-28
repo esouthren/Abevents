@@ -136,11 +136,14 @@
 				});
 			});
 			
+			
 			var field = document.getElementById('keywords');
-			if(field.onfocus){
+			
+			field.onfocus = function(){
 				this.value="";
 			}
-			else{
+			
+			field.hover = function(){
 				this.value=this.value;
 			}
 	
