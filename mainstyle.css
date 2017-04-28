@@ -240,39 +240,53 @@ input[type='radio'] {
 
 @media screen and (min-width: 150px) and (max-width: 650px) {
 	
+	body{
+		padding-top: 0px;
+	}
+	
+	.radio-custom, .radio-custom-label {
+		display : none;
+	}
+	
+	.CustomCombo {
+		display : none;
+	}
+	
 	h1 {
-		font: normal 25px/normal 'Montserrat', sans-serif;
+		font: normal 30px/normal 'Montserrat', sans-serif;
+		margin-bottom: 30px;
 	}
 	
 	
 	.form_frame {
-		width: 100%;
-		height: 475px;
+		width: 99%;
+		height: 270px;
 		border-radius: 40px;
 	}
 	
 	.logo {
-        	max-width: 100%;
-       		max-height: 100%;
-        	height: auto;
-        	width: auto;
+        max-width: 100%;
+       	max-height: 100%;
+        height: 48%;
+        width: auto;
         }
 	
 	.search_box {
-		width: 225px;
+		width: 220px;
+		margin-bottom: 20px;
 	}
 	
 	.search_box:hover {
-		width: 250px;
+		width: 240px;
 	}
 	
 	.search_box:focus {
-		width: 275px;
+		width: 260px;
 	}
 	
 	.searchButton {
-		margin-top:20px;
-		width: 260px;
+		margin-top:10px;
+		width: 255px;
 		height: 22px;
 		padding: 10px 10px;
 		border: none;
