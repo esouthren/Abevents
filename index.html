@@ -136,6 +136,25 @@
 				});
 			});
 			
+			/* 
+				For keeping/clearing searchbox on focus and loosing focus 
+			*/
+			field.onfocus = function(){
+				if(this.value == "Enter keywords..."){
+					this.value="";
+				}else{
+					this.value=this.value;
+				}
+			}
+			
+			field.onblur = function(){
+				if(this.value == ""){
+					this.value="Enter keywords...";
+				}else{
+					this.value=this.value;
+				}
+			}
+			
 			/*
 				Open custom combo box function
 			*/
