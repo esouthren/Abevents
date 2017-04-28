@@ -136,8 +136,8 @@
 				});
 			});
 			
-			if ($(".search_box").is(':focus')) {
-				$('.search_box').val('');
+			search_box.onfocus = function() {
+				this.value = "";
 			};
 			
 			/*
