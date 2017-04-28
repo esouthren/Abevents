@@ -55,7 +55,7 @@
 					<!-- Genre Choices -->
 
 					<div class="CustomCombo">
-						<p onclick="toggleOpen(this)">  Choose Genre... </p>
+						<p id="genre" onclick="toggleOpen(this)">  Choose Genre... </p>
 							<ul class="dropdown-menu">
 								<li onclick="selectOption(this)"> Nightclubs </li>
 								<li onclick="selectOption(this)"> Gigs </li>
@@ -67,12 +67,14 @@
 					
 					<!-- Keywords -->
 
-					<input class="search_box" value="Enter keywords..." />
+					<input id="keywords" class="search_box" value="Enter keywords..." />
 						<script src='https://use.edgefonts.net/amaranth.js'></script>
 					<a onclick="Search()" class="searchButton"> > </a>
                                         <!--<a href="results.html?When=Today" class="searchButton"> > </a>   -->
                                         <script>
                                             function Search() {
+                                                var search_params = "";
+                                            
                                                 var When = "Today";
                                                 if($('input[id="radio-1"]:checked').val()) {
                                                     When = "Today";
@@ -83,9 +85,19 @@
                                                 } else if($('input[id="radio-4"]:checked').val()) {
                                                     When = "Weeknights";
                                                 }
+                                                search_params += "When=" + When;
                                                 
+                                                var genre_text = $("#genre").text().trim();
+                                                if(genre_text != "Choose Genre...") {
+                                                    search_params += "&Genre=" + genre_text;
+                                                }
                                                 
-                                                window.location.href = 'results.html?When=' + When;
+                                                var keywords = $('input[id="keywords"]').val();
+                                                if(keywords != "Enter keywords...") {
+                                                    search_params += "&Keywords=" + keywords;
+                                                }
+                                                
+                                                window.location.href = "results.html?" + search_params;
                                             };
                                         </script>
 				</form>
