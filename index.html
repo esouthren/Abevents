@@ -67,28 +67,29 @@
 					
 					<!-- Keywords -->
 
-					<input id="keywords" class="search_box" value="Enter keywords..." />
+					<input type="text" id="keywords" class="search_box" value="Enter keywords..." />
 						<script src='https://use.edgefonts.net/amaranth.js'></script>
 					<a onclick="Search()" class="searchButton"> > </a>
-                                        <!--<a href="results.html?When=Today" class="searchButton"> > </a>   -->
-                                        <script>
-                                            function Search() {
-                                                var search_params = "";
-                                     
-						var keywords = $('input[id="keywords"]').val();
-                                                if(keywords != "Enter keywords..." && keywords != "") {
-                                                    search_params += "&Keywords=" + keywords;
-                                                }
-                                                
-                                                window.location.href = "results.html?" + search_params;
-                                            };
-                                        </script>
 				</form>
 			</div>
 		</div>
 	</div>
 		
 		<script>
+			
+			/*
+				Function passing search query to results page
+			*/
+			function Search() {
+                        	var search_params = "";
+                                     
+				var keywords = $('input[id="keywords"]').val();
+                                if(keywords != "Enter keywords..." && keywords != "") {
+                                	search_params += "&Keywords=" + keywords;
+                                }
+                                                
+                                window.location.href = "results.html?" + search_params;
+                                };
 			
 			/*
 				Declaring array of background images
