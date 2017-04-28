@@ -33,29 +33,29 @@
 				<form>
 				
 					<div>
-						<input id="radio-1" class="radio-custom" name="radio-group" type="radio" ng-model="formData.indexDate" checked>
+						<input id="radio-1" class="radio-custom" name="radio-group" type="radio" checked>
 						<label for="radio-1" class="radio-custom-label">Today</label>
 					</div>
 
 					<div>
-						<input id="radio-2" class="radio-custom"name="radio-group" type="radio" ng-model="formData.indexDate">
+						<input id="radio-2" class="radio-custom"name="radio-group" type="radio">
 						<label for="radio-2" class="radio-custom-label">Tomorrow</label>
 					</div>
 
 					<div>
-						<input id="radio-3" class="radio-custom" name="radio-group" type="radio" ng-model="formData.indexDate">
+						<input id="radio-3" class="radio-custom" name="radio-group" type="radio">
 						<label for="radio-3" class="radio-custom-label">Weekend</label>
 					</div>
 
 					<div>
-						<input id="radio-4" class="radio-custom" name="radio-group" type="radio" ng-model="formData.indexDate">
+						<input id="radio-4" class="radio-custom" name="radio-group" type="radio">
 						<label for="radio-4" class="radio-custom-label">Weeknights</label>
 					</div>
 					
 					<!-- Genre Choices -->
 
 					<div class="CustomCombo">
-						<p id="genre" onclick="toggleOpen(this)">  Choose Genre... </p>
+						<p onclick="toggleOpen(this)">  Choose Genre... </p>
 							<ul class="dropdown-menu">
 								<li onclick="selectOption(this)"> Nightclubs </li>
 								<li onclick="selectOption(this)"> Gigs </li>
@@ -74,25 +74,8 @@
                                         <script>
                                             function Search() {
                                                 var search_params = "";
-                                            
-                                                var When = "Today";
-                                                if($('input[id="radio-1"]:checked').val()) {
-                                                    When = "Today";
-                                                } else if($('input[id="radio-2"]:checked').val()) {
-                                                    When = "Tomorrow";
-                                                } else if($('input[id="radio-3"]:checked').val()) {
-                                                    When = "Weekend";
-                                                } else if($('input[id="radio-4"]:checked').val()) {
-                                                    When = "Weeknights";
-                                                }
-                                                search_params += "When=" + When;
-                                                
-                                                var genre_text = $("#genre").text().trim();
-                                                if(genre_text != "Choose Genre...") {
-                                                    search_params += "&Genre=" + genre_text;
-                                                }
-                                                
-                                                var keywords = $('input[id="keywords"]').val();
+                                     
+						var keywords = $('input[id="keywords"]').val();
                                                 if(keywords != "Enter keywords..." && keywords != "") {
                                                     search_params += "&Keywords=" + keywords;
                                                 }
