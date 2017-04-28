@@ -139,6 +139,8 @@
 			/* 
 				For keeping/clearing searchbox on focus and loosing focus 
 			*/
+			var field = document.getElementById('keywords');
+			
 			field.onfocus = function(){
 				if(this.value == "Enter keywords..."){
 					this.value="";
