@@ -1,30 +1,24 @@
-/* Rules for Smallerish screens */
+/* Rules for Smallerish screens/laptops */
 
 @media screen and (max-device-height: 800px) {
 
-#menu {
-	font-size: 75% !important;
+	#menu {
+		font-size: 75% !important;
 	}
-
-
 }
 
 @media only screen and (max-device-height: 900px) {
 
-#menu {
-	font-size: 70% !important;
+	#menu {
+		font-size: 70% !important;
 	}
 }
 
-
-
 /* Rules for Mobile Devices */
-
 
 @media only screen and (max-device-width: 750px) {
 
     #menu {
-
         width: 80% !important;
         position:  fixed !important;
         top: 0 !important;
@@ -35,29 +29,27 @@
         font-size: 80% !important;
     }
 
-    /* Mobile Menu backgrounc */
+    /* Mobile Menu background */
     #menuBodyCover {
-    z-index: 1;
-    min-width: 100%;
-    min-height: 100%;
-    background-color: rebeccapurple;
-    position: fixed;
-    opacity: 0.8;
-    border: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
+	    z-index: 1;
+	    min-width: 100%;
+	    min-height: 100%;
+	    background-color: rebeccapurple;
+	    position: fixed;
+	    opacity: 0.8;
+	    border: 0;
+	    left: 0;
+	    top: 0;
+	    bottom: 0;
     }
 
 	#Header {
-
-	 background-size: 100% 100% !important;
-background-repeat: no-repeat !important;
-
+		background-size: 100% 100% !important;
+		background-repeat: no-repeat !important;
 	 }
+
     .headerLogo {
         height: 85% !important;
-
     }
 
     #menu.ng-hide {
@@ -65,15 +57,11 @@ background-repeat: no-repeat !important;
     }
 
     .openMobileMenuButton {
-
         display: inline !important;
     }
 
-
-
     #eventsContainer {
         width: 100% !important;
-
     }
 
     .Event {
@@ -88,44 +76,38 @@ background-repeat: no-repeat !important;
         width: 60% !important;
     }
 
-
     body {
         font-size: 80% !important;
     }
 
     #Header {
-      height: 8% !important;
-      min-height: 80px !important;
+    	height: 8% !important;
+    	min-height: 80px !important;
     }
 
     /* Formatting the icon key for mobile */
 
-		#IconContent {
-			height: 95% !important;
-			border-radius: 0px !important;
-			line-spacing: 0.25 !important;
-
-		}
-
+	#IconContent {
+		height: 95% !important;
+		border-radius: 0px !important;
+		line-spacing: 0.25 !important;
+	}
 
     #IconContent ul li span {
-
     	font-size: 1.5em !important;
 	    margin-left: 0.5em !important;
-		}
+	}
 
-		#IconContent ul {
+	#IconContent ul {
+    	margin-top: 10px !important;
+		margin-left: 1px !important;
+	}
 
-		    margin-top: 10px !important;
-				margin-left: 1px !important;
-}
-
-		#IconContent ul li {
+	#IconContent ul li {
 		    float: left;
 		    width: 100% !important;
 		    padding-bottom: 5px !important;
-		}
-
+	}
 }
 
 /* Main Screen Rules */
@@ -143,19 +125,17 @@ body {
     user-select: none;
     margin: 0 auto;
     font-family: Montserrat;
-
-background-attachment: fixed;
+	background-attachment: fixed;
     font-size: 100%;
 }
 
 button {
   font-family: Montserrat;
 }
+
 #Header {
     background-image: url("images/header.png");
-
 	background-repeat: no-repeat;
-
     height: 10%;
     min-height: 100px;
     position: fixed;
@@ -170,17 +150,11 @@ button {
     margin: 0.5em 0em 0.5em 1em;
 }
 
-
-
-
-
 #mysticalHeaderPaddingFix {
     height: 10%;
     width: 100%;
     min-height: 100px;
-
 }
-
 
 .openMobileMenuButton {
     position: fixed;
@@ -191,42 +165,29 @@ button {
     display: none;
 }
 
-
-
-
-
 #eventsContainer {
     overflow-y: auto;
     position: relative;
-   width: 76%;
+   	width: 76%;
     left: 0;
     float: left;
     background: rgba(255,255,255,0.8);
     min-height: 3000px;
-
-
 }
-
 
 .eventsTable {
 	width: 97%;
     padding: 0.5em;
-
-        margin-left: 1.5em;
-   // background-color: #ffffff;
+    margin-left: 1.5em;
     opacity: 0.9;
     border-radius: 0.5em;
     min-height: 10px;
-
 }
 
-
-
-
- .eventsTable h1 {
+.eventsTable h1 {
 	 font-family: Montserrat;
 	 font-style: semi-bold;
-     color: #E70B3A;
+	 color: #E70B3A;
  }
 
 .eventsTable h2 {
@@ -234,27 +195,19 @@ button {
     font-style: semi-bold;
 }
 
-
-.seventsTable {
-    width: 100%;
-
-
-}
-
-
-
 #eventDivider {
 	display: block;
- margin-top: 1em;
- margin-bottom: 0.5em;
- margin-left: auto;
- margin-right: auto;
- border-style: solid;
- border-width: 3px;
- background-image: url("images/header.png");
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+	border-style: solid;
+	border-width: 3px;
+	background-image: url("images/header.png");
     border-radius: 1em;
     width: 95%;
 }
+
 .eventImg {
     width: 20%;
     max-height: 100px;
@@ -281,13 +234,11 @@ button {
 }
 .eventText {
     vertical-align: top;
-
 }
 
 .eventText h1, h2, h3, h4 {
     margin: 0;
 }
-
 
 #Calendar {
     color: white;
@@ -306,39 +257,28 @@ hr {
     height: 0.3em;
 }
 
-
-
 /* Menu Stuff */
 
  #menu {
-
-	 width: 20%;
-     position: fixed;
-
+	width: 20%;
+    position: fixed;
     background: rgba(0,0,0,0.7);
-
-
-	 min-height: 100vh;
-   height: 100px;
-	 color: white;
-	 padding: 1% 2% 1% 2%;
-
-     right: 0;
-     top: 100px;
-     float: right;
-
-
-
+	min-height: 100vh;
+    height: 100px;
+	color: white;
+	padding: 1% 2% 1% 2%;
+    right: 0;
+    top: 100px;
+    float: right;
  }
-  #menuMobile {
+
+ #menuMobile {
 	 float: right;
 	 width: 100%;
 	 background-color: green;
-
 	 color: white;
 	 padding: 1% 5% 3% 5%;
 	 display: none;
-
  }
 
  .dateTextBox {
@@ -349,7 +289,6 @@ hr {
 	 border: 0;
 	 width: 90%;
  }
-
 
  .updateSearchButton {
 	 border-radius: 2px;
@@ -369,38 +308,36 @@ hr {
  .sliderTable {
 	 width: 100%;
 	 line-height: 0;
-
  }
+
  .slider {
 	 width: 85%;
-
  }
+
  .sliderBar {
 	 width: 100%;
  }
- .sliderValue {
-  text-align: right;
 
+ .sliderValue {
+  	text-align: right;
  }
 
  #catButton {
 	 background-color: #e70b3a;
 	 border-radius: 2px;
-   padding: 0em 0.5em 0em 0.5em;
+   	 padding: 0em 0.5em 0em 0.5em;
 	 border: 0;
 	 color: white;
 	 margin: 1%;
 	 display: inline;
 	 line-height: 2.5;
-   font-weight: bold;
-   font-size: 100%;
-
+    font-weight: bold;
+    font-size: 100%;
  }
 
 #catButton:focus {
 	outline: none;
 }
-
 
 .keywords {
 	background-color: white;
@@ -422,23 +359,17 @@ hr {
 }
 
 #IconContent {
-
     width: 92%;
     height: 80%;
-
     margin: auto;
     margin-top: 35px;
-
     padding: 20px;
-
     border-radius: 10px;
     background-color: white;
     font-size: 1em;
     color: red;
     font-family: Montserrat;
-
 }
-
 
 #IconContent hr {
     border-color: red;
@@ -450,7 +381,6 @@ hr {
 
 #IconContent img {
     width: 3%;
-
     padding-left: 1em;
     float: right;
 }
@@ -459,7 +389,6 @@ hr {
     width: 100%;
     margin: 20px;
     padding-left: 0px;
-
     list-style-type: none;
 }
 
