@@ -1,26 +1,24 @@
 <html>
 <head>
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width" />
 
 	<title> Abevents </title>
 
 	<link rel="stylesheet" href="mainstyle.css"/>
-
+	
 	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    	<script src="https://code.angularjs.org/1.3.15/angular.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-				<script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
-	<script src="jsController.js"></script>
 
 </head>
 
 <body class="body">
-
+	
+	<!-- Seperate body into frame which is black border around elements(form_frame), form elements that have to be centered(form_elements) and logo/header -->
+	
 	<div align="center">
 
-		<img class ="logo" src="images/main_logo_b.png">
+		<img class ="logo">
 
 		<div class="form_frame">
 
@@ -28,8 +26,12 @@
 
 				<h1> For Everything Aberdeen </h1>
 
+				<!-- All choices that will sort the event out on result page -->
+				
+				<!-- Date Choices -->
+				
 				<form>
-
+				
 					<div>
 						<input id="radio-1" class="radio-custom" name="radio-group" type="radio" ng-model="formData.indexDate" checked>
 						<label for="radio-1" class="radio-custom-label">Today</label>
@@ -49,9 +51,11 @@
 						<input id="radio-4" class="radio-custom" name="radio-group" type="radio" ng-model="formData.indexDate">
 						<label for="radio-4" class="radio-custom-label">Weeknights</label>
 					</div>
+					
+					<!-- Genre Choices -->
 
 					<div class="CustomCombo">
-						<p ng-model="indexGenre" onclick="toggleOpen(this)">  Choose Genre... </p>
+						<p onclick="toggleOpen(this)">  Choose Genre... </p>
 							<ul class="dropdown-menu">
 								<li onclick="selectOption(this)"> Nightclubs </li>
 								<li onclick="selectOption(this)"> Gigs </li>
@@ -60,8 +64,10 @@
 								<li onclick="selectOption(this)"> Festivals </li>
 							</ul>
 					</div>
+					
+					<!-- Keywords -->
 
-					<input ng-model="keywordsQuery" class="search_box" value="Enter keywords..." />
+					<input class="search_box" value="Enter keywords..." />
 						<script src='https://use.edgefonts.net/amaranth.js'></script>
 					<a href="results.html" class="searchButton"> > </a>
 
@@ -69,8 +75,12 @@
 			</div>
 		</div>
 	</div>
+		
 		<script>
-
+			
+			/*
+				Declaring array of background images
+			*/
 			var images = ["images/backgrounds/1.jpg", "images/backgrounds/2.jpg" ,
 				      "images/backgrounds/3.jpg", "images/backgrounds/4.jpg" ,
 				      "images/backgrounds/5.jpg", "images/backgrounds/6.jpg" ,
@@ -79,9 +89,15 @@
 				      "images/backgrounds/11.jpg", "images/backgrounds/12.jpg" ,
 				      "images/backgrounds/13.jpg", "images/backgrounds/14.jpg" ,
 				      "images/backgrounds/15.jpg", "images/backgrounds/16.jpg"];
-
+					  
+			/*
+				Setting the background to random one from the array above
+			*/
 			$('html').css({'background-image': 'url(' + images[Math.floor(Math.random() * images.length)] + ")"});
-
+			
+			/*
+				Close custom combo box if user presses on the page instead of one of the choices.
+			*/
 			$(document).ready(function () {
 				$(".body").click(function(){
 					closeAll();
@@ -90,21 +106,37 @@
 					event.stopPropagation();
 				});
 			});
-            		function toggleOpen(box) {
+			
+			/*
+				Open custom combo box function
+			*/
+            		function toggleOpen(box) 
+			{
                			console.log("Toggle");
                			if(box.parentElement.className === "CustomCombo") {
                     			box.parentElement.className = "CustomComboOpen";
-                		} else {
+                		} 
+				else {
                     			box.parentElement.className = "CustomCombo";
-                		}
+				}
             		}
-			function closeAll() {
+				
+			/*
+				Close custom combo box function
+			*/
+			function closeAll() 
+			{
 				boxes = document.getElementsByClassName("CustomComboOpen");
 				for(var i = 0; i < boxes.length; i ++) {
 					boxes[i].className = "CustomCombo";
 				}
 			}
-            		function selectOption(option) {
+			
+			/*
+				Select one of the options from custom combo box
+			*/
+			function selectOption(option) 
+			{
                 		console.log("Select");
                			option.parentElement.parentElement.firstElementChild.innerHTML = option.innerHTML;
                 		toggleOpen(option.parentElement);
