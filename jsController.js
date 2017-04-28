@@ -255,7 +255,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
 			 if (s > -1) {
 				 var start = s + 9;
 				 words = words.slice(start);
-				 words = words.slice(0,-2);
+			
 			 	$scope.keywordsQuery = words;
 				// stop it from reading the URL again
 				$scope.urlParameters = false;
