@@ -140,7 +140,12 @@
 			var field = document.getElementById('keywords');
 			
 			field.onfocus = function(){
-				this.value="";
+				if(this.value = "Enter keywords..."){
+					this.value="";
+				}else{
+					this.value=this.value;
+				}
+				
 			}
 			
 			field.hover = function(){
