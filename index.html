@@ -30,47 +30,44 @@
 				
 				<!-- Date Choices -->
 				
-				<form onsubmit="Search()">
-				
-					<div>
-						<input id="radio-1" class="radio-custom" name="radio-group" type="radio" checked>
-						<label for="radio-1" class="radio-custom-label">Today</label>
-					</div>
+				<div>
+					<input id="radio-1" class="radio-custom" name="radio-group" type="radio" checked>
+					<label for="radio-1" class="radio-custom-label">Today</label>
+				</div>
 
-					<div>
-						<input id="radio-2" class="radio-custom"name="radio-group" type="radio">
-						<label for="radio-2" class="radio-custom-label">Tomorrow</label>
-					</div>
+				<div>
+					<input id="radio-2" class="radio-custom"name="radio-group" type="radio">
+					<label for="radio-2" class="radio-custom-label">Tomorrow</label>
+				</div>
 
-					<div>
-						<input id="radio-3" class="radio-custom" name="radio-group" type="radio">
-						<label for="radio-3" class="radio-custom-label">Weekend</label>
-					</div>
+				<div>
+					<input id="radio-3" class="radio-custom" name="radio-group" type="radio">
+					<label for="radio-3" class="radio-custom-label">Weekend</label>
+				</div>
 
-					<div>
-						<input id="radio-4" class="radio-custom" name="radio-group" type="radio">
-						<label for="radio-4" class="radio-custom-label">Weeknights</label>
-					</div>
+				<div>
+					<input id="radio-4" class="radio-custom" name="radio-group" type="radio">
+					<label for="radio-4" class="radio-custom-label">Weeknights</label>
+				</div>
 					
-					<!-- Genre Choices -->
+				<!-- Genre Choices -->
 
-					<div class="CustomCombo">
-						<p onclick="toggleOpen(this)">  Choose Genre... </p>
-							<ul class="dropdown-menu">
-								<li onclick="selectOption(this)"> Nightclubs </li>
-								<li onclick="selectOption(this)"> Gigs </li>
-								<li onclick="selectOption(this)"> Comedy </li>
-								<li onclick="selectOption(this)"> Theatre </li>
-								<li onclick="selectOption(this)"> Festivals </li>
-							</ul>
-					</div>
+				<div class="CustomCombo">
+					<p onclick="toggleOpen(this)">  Choose Genre... </p>
+						<ul class="dropdown-menu">
+							<li onclick="selectOption(this)"> Nightclubs </li>
+							<li onclick="selectOption(this)"> Gigs </li>
+							<li onclick="selectOption(this)"> Comedy </li>
+							<li onclick="selectOption(this)"> Theatre </li>
+							<li onclick="selectOption(this)"> Festivals </li>
+						</ul>
+				</div>
 					
 					<!-- Keywords -->
 
-					<input id="keywords" class="search_box" value="Enter keywords..." />
-						<script src='https://use.edgefonts.net/amaranth.js'></script>
-					<a onclick="Search()" class="searchButton"> > </a>
-				</form>
+				<input id="keywords" class="search_box" value="Enter keywords..." />
+					<script src='https://use.edgefonts.net/amaranth.js'></script>
+				<a onclick="Search()" class="searchButton"> > </a>
 			</div>
 		</div>
 	</div>
