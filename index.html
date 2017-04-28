@@ -69,8 +69,25 @@
 
 					<input class="search_box" value="Enter keywords..." />
 						<script src='https://use.edgefonts.net/amaranth.js'></script>
-					<a href="results.html" class="searchButton"> > </a>
-
+					<a onclick="Search()" class="searchButton"> > </a>
+                                        <!--<a href="results.html?When=Today" class="searchButton"> > </a>   -->
+                                        <script>
+                                            function Search() {
+                                                var When = "Today";
+                                                if($('input[id="radio-1"]:checked').val()) {
+                                                    When = "Today";
+                                                } else if($('input[id="radio-2"]:checked').val()) {
+                                                    When = "Tomorrow";
+                                                } else if($('input[id="radio-3"]:checked').val()) {
+                                                    When = "Weekend";
+                                                } else if($('input[id="radio-4"]:checked').val()) {
+                                                    When = "Weeknights";
+                                                }
+                                                
+                                                
+                                                window.location.href = '../results.html?When=' + When;
+                                            };
+                                        </script>
 				</form>
 			</div>
 		</div>
