@@ -256,7 +256,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
 				 var start = s + 9;
 				 words = words.slice(start);
 			
-			 	$scope.keywordsQuery = words;
+			 	$scope.keywordsQuery = words.replace("%20", " ");
 				// stop it from reading the URL again
 				$scope.urlParameters = false;
 		 	}
@@ -265,7 +265,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
         // filtering by keywords
 		/// if the user has entered any keywords...
         if ($scope.keywordsQuery != "") {
-            var keywords = $scope.keywordsQuery.toLowerCase().replace("%20", " ").split(" ");
+            var keywords = $scope.keywordsQuery.toLowerCase().split(" ");
 	    
 	    console.log(keywords);
             var remove = true;
