@@ -266,6 +266,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
 		/// if the user has entered any keywords...
         if ($scope.keywordsQuery != "") {
             var keywords = $scope.keywordsQuery.toLowerCase().split(" ");
+	    console.log(keywords);
             var remove = true;
             for (var x = 0; x < keywords.length; x++) {
                 if (e.eventname.toLowerCase().includes(keywords[x])) {
