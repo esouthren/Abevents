@@ -3,10 +3,15 @@
 
 
 // define application
-var abEvents = angular.module("abEvents", ['ngMap', 'ngAnimate']);
+var abEvents = angular.module("abEvents", ['ngMap', 'ngAnimate', 'ngStorage']);
 
 //define controller for application
-abEvents.controller("abEventsController", function($scope, $http, $timeout, $window) {
+abEvents.controller("abEventsController", function($scope, $http, $timeout, $window, $localStorage) {
+
+// this should be a cookie thing...
+  $scope.$storage = $localStorage.$default({
+          keywords: "Enter Keywords..."
+          });
 
 
     $scope.test = "hey dere";
@@ -34,9 +39,9 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
     $scope.catTheatre = true;
     $scope.catFestivals = true;
     $scope.catCeilidh = true;
-                    
-             
 
+
+    $scope.indexPass = "";
     // API call
     $scope.apiCall = function() {
 
@@ -59,9 +64,10 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
         $scope.response = null;
         // turn on the loading gif
         $scope.loading = true;
+        $scope.noEvents = false;
         // set API key
         $http.defaults.headers.common["Ocp-Apim-Subscription-Key"] = '7f3028ae78924451854a93a4151e2733';
- 
+
 
         // aight here we go! Starting API Call
         $http({
@@ -154,7 +160,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
             if ((e.eventname.toLowerCase()).includes("ceilidh")) {
                 e.ceilidh = true;
             }
-                       
+
             // workaround: certain venues only have ticketed events // this is a mess and could be cleaned up with an array of club strings
                        var title = e.location.toLowerCase();
                        if (title == "krakatoa" || title.includes("band") || title.includes("lemon tree") || title.includes("drummonds")) {
@@ -162,13 +168,13 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
                             e.minAge18 = true;
                         e.minAge18 = true;
                            }
-                   
+
                        if (title.includes("tunnels") || title.includes("51") || title.includes("cotton") || title.includes("revolucion") || title.includes("institute") || title.includes("underground")) {
                        e.hasTickets = true;
                        e.nightclub = true;
                        e.minAge18 = true;
                        }
-                     
+
 
               // Editing the Output for user's selected criteria
               // Categories
@@ -259,13 +265,13 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
            }
 
          }
-                       
+
         // filtering by keywords
-                       
+
         if ($scope.keywordsQuery != "") {
-                       
+
             var keywords = $scope.keywordsQuery.toLowerCase().split(" ");
-                       
+
             var remove = true;
             for (var x = 0; x < keywords.length; x++) {
                 if (e.eventname.toLowerCase().includes(keywords[x])) {
@@ -284,13 +290,13 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
                        remove = false;
                        }
                        }
-                       
+
             }
             if (remove) {
                 response.data.splice(i,1);
             }
         }
-                       
+
               e.categoriesDisplay = "";         // making a nice category display list
         if (e.categories.length > 0) {
                 e.categoriesDisplay = "Categories: ";
@@ -299,7 +305,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
                        }
                        e.categoriesDisplay = e.categoriesDisplay.substring(0,e.categoriesDisplay.length-2);
                     }
-                       
+
 
        } // end of response interation
 
@@ -310,6 +316,10 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
         console.log("Number of events:");
         console.log($scope.response.length);
                        console.log($scope.response);
+        // no events? display error message
+        if ($scope.response.length < 1) {
+          $scope.noEvents = true;
+        }
 
       });
 
@@ -322,7 +332,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
                     // reload page (when user wants to clear search parameters)
                     $scope.reload = function()
                     {
-                    location.reload(); 
+                    location.reload();
                     }
 
     // toggles visibility of menu on mobile devices

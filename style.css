@@ -52,12 +52,12 @@
 	#Header {
 
 	 background-size: 100% 100% !important;
-     
-     
+background-repeat: no-repeat !important;
+
 	 }
     .headerLogo {
         height: 85% !important;
-    
+
     }
 
     #menu.ng-hide {
@@ -104,7 +104,7 @@
 			height: 95% !important;
 			border-radius: 0px !important;
 			line-spacing: 0.25 !important;
-			
+
 		}
 
 
@@ -144,7 +144,7 @@ body {
     margin: 0 auto;
     font-family: Montserrat;
 
-background-image: url("images/background.png");
+background-attachment: fixed;
     font-size: 100%;
 }
 
@@ -314,9 +314,9 @@ hr {
 
 	 width: 20%;
      position: fixed;
-	
+
     background: rgba(0,0,0,0.7);
-    
+
 
 	 min-height: 100vh;
    height: 100px;
@@ -424,7 +424,7 @@ hr {
 #IconContent {
 
     width: 92%;
-    height: 70%;
+    height: 80%;
 
     margin: auto;
     margin-top: 35px;
