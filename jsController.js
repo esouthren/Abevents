@@ -5,7 +5,7 @@
 var abEvents = angular.module("abEvents", ['ngMap', 'ngAnimate', 'ngStorage']);
 
 //define controller for application
-abEvents.controller("abEventsController", function($scope, $http, $timeout, $window, $localStorage) {
+abEvents.controller("abEventsController", function($scope, $http, $timeout, $window, $location) {
 
 
     $scope.response = "API response!";
@@ -32,6 +32,7 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
     $scope.catFestivals = true;
     $scope.catCeilidh = true;
     $scope.indexPass = "";
+	$scope.urlParameters = true;
 
     // API call Function
     $scope.apiCall = function() {
@@ -244,6 +245,23 @@ abEvents.controller("abEventsController", function($scope, $http, $timeout, $win
            }
          }
 
+		 // check if keywords have come from index.html
+		 if ($scope.urlParameters) {
+			 // get URL and parse data from it
+			 var words = $location.absUrl();
+			 var s = words.indexOf("Keywords=");
+			 console.log(s);
+			 // if keywords are in the URL...
+			 if (s > -1) {
+				 var start = s + 9;
+				 words = words.slice(start);
+				 words = words.slice(0,-2);
+			 	$scope.keywordsQuery = words;
+				// stop it from reading the URL again
+				$scope.urlParameters = false;
+		 	}
+		}
+		
         // filtering by keywords
 		/// if the user has entered any keywords...
         if ($scope.keywordsQuery != "") {
