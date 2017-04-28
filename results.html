@@ -135,7 +135,7 @@
 			<table>
         <tr>
           <td><h3>Clear Parameters &nbsp;&nbsp;&nbsp; </h3></td>
-          <td><h6><input type="submit" ng-click="reload()" id="catButton" value="> > "> </h6></td>
+          <td><h6><a href="results.html" style="text-decoration: none"><input type="submit" id="catButton" value="> > "></a> </h6></td>
         </tr>
       </table>
 
@@ -260,35 +260,18 @@
         var child = document.getElementById('container2');
 	var map = document.getElementById('mapEvent');
 	var marker = document.getElementById('markerEvent');
-	
+
 	marker.addListener('click', function(){
 		infowindow.open(map, marker);
 	});
-	    
+
 	var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
-	    
+
         child.style.paddingRight = child.offsetWidth - child.clientWidth + "px";
 
 				</script>
-			
-	<script>
-        var GET = {};
-        var query = window.location.search.substring(1).split("&");
-        for (var i = 0, max = query.length; i < max; i++)
-        {
-            if (query[i] === "") // check for trailing & with no param
-                continue;
 
-            var param = query[i].split("=");
-            GET[decodeURIComponent(param[0])] = decodeURIComponent(param[1] || "");
-            
-        }
-        console.log(GET["When"]);
-        console.log(GET["Genre"]);
-        console.log(GET["Keywords"]);
-        
-    	</script>
   	</body>
 </html>
