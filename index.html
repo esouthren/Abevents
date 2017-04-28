@@ -136,7 +136,8 @@
 				});
 			});
 			
-			search_box.onfocus = function() {
+			var field = document.getElementById('keywords');
+			field.onfocus = function() {
 				this.value = "";
 			};
 			
