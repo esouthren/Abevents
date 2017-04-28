@@ -137,10 +137,13 @@
 			});
 			
 			var field = document.getElementById('keywords');
-			field.onfocus = function() {
-				this.value = "";
-			};
-			
+			if(field.onfocus){
+				this.value="";
+			}
+			else{
+				this.value=this.value;
+			}
+	
 			/*
 				Open custom combo box function
 			*/
