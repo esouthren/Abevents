@@ -67,7 +67,7 @@
 					
 					<!-- Keywords -->
 
-					<input type="text" id="keywords" class="search_box" value="Enter keywords..." />
+					<input id="keywords" class="search_box" value="Enter keywords..." />
 						<script src='https://use.edgefonts.net/amaranth.js'></script>
 					<a onclick="Search()" class="searchButton"> > </a>
 				</form>
@@ -101,8 +101,8 @@
 				      "images/backgrounds/9.jpg", "images/backgrounds/10.jpg" ,
 				      "images/backgrounds/11.jpg", "images/backgrounds/12.jpg" ,
 				      "images/backgrounds/13.jpg", "images/backgrounds/14.jpg" ,
-				      "images/backgrounds/15.jpg", "images/backgrounds/16.jpg"];
-					  
+				      "images/backgrounds/15.jpg", "images/backgrounds/16.jpg"];	 
+			
 			/*
 				Setting the background to random one from the array above
 			*/
@@ -124,6 +124,12 @@
 				For keeping/clearing searchbox on focus and loosing focus 
 			*/
 			var field = document.getElementById('keywords');
+			
+			field.addEventListener("keydown", function(e) {
+				if (e.keyCode === 13) {
+					Search();
+				}
+			});
 			
 			field.onfocus = function(){
 				if(this.value == "Enter keywords..."){
